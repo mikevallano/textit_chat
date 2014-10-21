@@ -41,7 +41,12 @@ class MessagesController < ApplicationController
   # POST /messages/create_from_textit
   # POST /messages/create_from_textit.json
   def create_from_textit
-    @message = Message.new(to: "DKT")
+    # pry
+    @message = Message.new(
+      to: "DKT - OAP",
+      from: params[:phone],
+      message: JSON.parse(params.require(:values)).try(:first).try(:text)
+    )
 
     respond_to do |format|
       if @message.save
