@@ -40,7 +40,7 @@ class MessagesController < ApplicationController
 
   # POST /messages/create_from_textit
   # POST /messages/create_from_textit.json
-  def create
+  def create_from_textit
     @message = Message.new(to: "DKT")
 
     respond_to do |format|
