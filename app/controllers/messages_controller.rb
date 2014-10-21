@@ -1,3 +1,7 @@
+require 'uri'
+require 'net/http'
+require 'net/https'
+
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
 
@@ -31,6 +35,28 @@ class MessagesController < ApplicationController
       if @message.save
         format.html { redirect_to @message, notice: 'Message was successfully created.' }
         format.json { render :show, status: :created, location: @message }
+
+          Thread.new do
+            last_message = @message.where(to: "DKT - OAP").first
+            @toSend = {
+                "text" => @message.message,
+                "phone" => last_message.from,
+                "relayer" => last_message.relayer
+
+            }.to_json
+
+
+            uri = URI.parse("https://api.textit.in/api/v1/messages.json")
+            https = Net::HTTP.new(uri.host,uri.port)
+            https.use_ssl = true
+            req = Net::HTTP::Post.new(uri.path, initheader = {'Content-Type' =>'application/json'})
+            req['Authorization'] = "Token 3c1a5032e340eca98b900e2e6a268e525816b4dc"
+
+            req.body = "[ #{@toSend} ]"
+
+            res = https.request(req)
+
+          end
       else
         format.html { render :new }
         format.json { render json: @message.errors, status: :unprocessable_entity }
@@ -45,7 +71,8 @@ class MessagesController < ApplicationController
     @message = Message.new(
       to: "DKT - OAP",
       from: params[:phone],
-      message: params[:text]
+      message: params[:text],
+      relayer: params[:relayer]
     )
 
     respond_to do |format|
