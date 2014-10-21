@@ -38,6 +38,26 @@ class MessagesController < ApplicationController
     end
   end
 
+  # POST /messages/create_from_textit
+  # POST /messages/create_from_textit.json
+  def create
+    @message = Message.new(to: "DKT")
+
+    respond_to do |format|
+      if @message.save
+        format.html { redirect_to @message, notice: 'Message was successfully created.' }
+        format.json { render :show, status: :created, location: @message }
+      else
+        format.html { render :new }
+        format.json { render json: @message.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  #     POST http://www.yourapp.com/app.php?password=akabanga
+# event=flow&relayer=254&relayer_phone=%2B250788111111&phone=%2B250788123123&flow=1524&step=12341234-1234-1234-1234-1234-12341234&values=[]
+
+
   # PATCH/PUT /messages/1
   # PATCH/PUT /messages/1.json
   def update
@@ -72,4 +92,5 @@ class MessagesController < ApplicationController
     def message_params
       params.require(:message).permit(:message)
     end
+
 end
