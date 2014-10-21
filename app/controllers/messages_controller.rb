@@ -45,7 +45,7 @@ class MessagesController < ApplicationController
     @message = Message.new(
       to: "DKT - OAP",
       from: params[:phone],
-      message: JSON.parse(params.require("values")).try("first").try("text")
+      message: params.require("values").try(:first).try(:[],"text")
     )
 
     respond_to do |format|
