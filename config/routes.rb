@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :messages do
     collection do
       post 'create_from_textit'
+      post 'start_from_textit'
+      get 'clear_wait'
     end
   end
 

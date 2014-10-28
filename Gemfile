@@ -40,3 +40,4 @@ gem 'spring',        group: :development
 
 gem 'rails_12factor', group: :production
 gem 'pry-rails', :group => :development
+gem 'rest_client'

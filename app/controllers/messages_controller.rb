@@ -1,6 +1,9 @@
-require 'uri'
-require 'net/http'
-require 'net/https'
+# require 'uri'
+# require 'net/http'
+# require 'net/https'
+
+
+require 'rest_client'
 
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
@@ -33,35 +36,35 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
+        last_message = @message.where(to: "DKT - OAP").first
+
+        textit_endpoint = "https://api.textit.in/api/v1/messages.json"
+        RestClient.post(
+          textit_endpoint,
+          {
+            "text" => @message.message,
+            "phone" => last_message.from
+          },
+          {
+            "Content-Type" => 'application/json',
+            'Authorization' => "Token 3c1a5032e340eca98b900e2e6a268e525816b4dc"
+          }
+        )
+
         format.html { redirect_to @message, notice: 'Message was successfully created.' }
         format.json { render :show, status: :created, location: @message }
-
-          Thread.new do
-            last_message = @message.where(to: "DKT - OAP").first
-            @toSend = {
-                "text" => @message.message,
-                "phone" => last_message.from,
-                "relayer" => last_message.relayer
-
-            }.to_json
-
-
-            uri = URI.parse("https://api.textit.in/api/v1/messages.json")
-            https = Net::HTTP.new(uri.host,uri.port)
-            https.use_ssl = true
-            req = Net::HTTP::Post.new(uri.path, initheader = {'Content-Type' =>'application/json'})
-            req['Authorization'] = "Token 3c1a5032e340eca98b900e2e6a268e525816b4dc"
-
-            req.body = "[ #{@toSend} ]"
-
-            res = https.request(req)
-
-          end
       else
         format.html { render :new }
         format.json { render json: @message.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+
+  # POST /messages
+  # POST /messages.json
+  def create_test
+
   end
 
   # POST /messages/create_from_textit
@@ -71,8 +74,8 @@ class MessagesController < ApplicationController
     @message = Message.new(
       to: "DKT - OAP",
       from: params[:phone],
-      message: params[:text],
-      relayer: params[:relayer]
+      message: params[:text]
+      # relayer: params[:relayer]
     )
 
     respond_to do |format|
@@ -86,6 +89,28 @@ class MessagesController < ApplicationController
     end
   end
 
+  # POST /messages/start_from_textit
+  # POST /messages/start_from_textit.json
+  def start_from_textit
+    Message.waiting = true
+  end
+
+  def clear_wait
+    Message.waiting = false
+    redirect_to messages_path
+    Thread.new do
+        uri = URI.parse("https://api.textit.in/api/v1/messages.json")
+        https = Net::HTTP.new(uri.host,uri.port)
+        https.use_ssl = true
+        req = Net::HTTP::Post.new(uri.path, initheader = {'Content-Type' =>'application/json'})
+        req['Authorization'] = "Token 3c1a5032e340eca98b900e2e6a268e525816b4dc"
+
+        req.body = "[ #{@toSend} ]"
+
+        res = https.request(req)
+
+      end
+  end
   #     POST http://www.yourapp.com/app.php?password=akabanga
 # event=flow&relayer=254&relayer_phone=%2B250788111111&phone=%2B250788123123&flow=1524&step=12341234-1234-1234-1234-1234-12341234&values=[]
 

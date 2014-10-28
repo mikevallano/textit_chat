@@ -1,5 +1,9 @@
 <h1>DKT OAP Chat</h1>
 
+<% if Message.waiting %>
+  <%= link_to "Someone is waiting", clear_wait_messages_path %>
+<% end %>
+
 <%= render 'form' %>
 
 <table>
