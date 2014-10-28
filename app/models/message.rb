@@ -2,7 +2,7 @@ require 'rest_client'
 
 class Message < ActiveRecord::Base
   @@system_sms_phone_name = "DKT"
-  @@system_sms_phone_number = "+34664762530"
+  @@system_sms_phone_number = "+441234480329"
 
   def self.system_sms_phone_number
     @@system_sms_phone_number
