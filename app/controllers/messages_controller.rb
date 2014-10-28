@@ -28,7 +28,6 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.sent_by_system = true
     @message.from = Message.system_sms_phone_number
-    # @message.to = "+34664762530"
     last_message = Message.where(sent_by_system: false).order("created_at desc").first
     @message.to = last_message.from
 
@@ -52,7 +51,6 @@ class MessagesController < ApplicationController
   # POST /messages/create_from_textit
   # POST /messages/create_from_textit.json
   def create_from_textit
-    # pry
     @message = Message.new(
       to: Message.system_sms_phone_number,
       from: params[:phone],

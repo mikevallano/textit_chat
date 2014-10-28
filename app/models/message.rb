@@ -1,19 +1,15 @@
 require 'rest_client'
 
 class Message < ActiveRecord::Base
-  @@waiting = true
-  @@system_sms_phone_number = "DKT"
-
-  def self.waiting
-    @@waiting
-  end
-
-  def self.waiting=(state)
-    @@waiting = state
-  end
+  @@system_sms_phone_name = "DKT"
+  @@system_sms_phone_number = "+34664762530"
 
   def self.system_sms_phone_number
     @@system_sms_phone_number
+  end
+
+  def self.system_sms_phone_name
+    @@system_sms_phone_name
   end
 
   def send_textit_sms

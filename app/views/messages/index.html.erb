@@ -1,9 +1,5 @@
-<h1>DKT OAP Chat</h1>
-
-<% if Message.waiting %>
-  <%= link_to "Someone is waiting", clear_wait_messages_path %>
-<% end %>
-
+<h1>DKT safe2choose Chat</h1>
+<p>Refresh the page to see new messages. Create a message to respond. Your response will go to the last person who sent.</t>
 <%= render 'form' %>
 
 <table>
@@ -13,9 +9,6 @@
       <th>To</th>
       <th>Message</th>
       <th>Sent at</th>
-      <th>Sent</th>
-      <th>Delivered</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
@@ -23,14 +16,9 @@
     <% @messages.each do |message| %>
       <tr>
         <td><%= message.from %></td>
-        <td><%= message.to %></td>
+        <td><%= sanitize_to_field message.to %></td>
         <td><%= message.message %></td>
-        <td><%= message.sent_at %></td>
-        <td><%= message.sent %></td>
-        <td><%= message.delivered %></td>
-        <td><%= link_to 'Show', message %></td>
-        <td><%= link_to 'Edit', edit_message_path(message) %></td>
-        <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= message.created_at %></td>
       </tr>
     <% end %>
   </tbody>
