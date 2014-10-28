@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :chats
+
   resources :messages do
     collection do
       post 'create_from_textit'

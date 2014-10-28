@@ -29,12 +29,13 @@ class MessagesController < ApplicationController
     @message.sent_by_system = true
     @message.from = Message.system_sms_phone_number
     last_message = Message.where(sent_by_system: false).order("created_at desc").first
-    @message.to = last_message.from
+    @message.to = params[:destination]
+    @message.chat = Chat.find_or_create_by name: @message.to
 
     respond_to do |format|
       if @message.save
         @message.send_textit_sms
-        format.html { redirect_to messages_path, notice: 'Message was successfully created.' }
+        format.html { redirect_to @message.chat, notice: 'Message was successfully created.' }
       else
         format.html { render :new }
       end
@@ -56,7 +57,8 @@ class MessagesController < ApplicationController
       from: params[:phone],
       message: params[:text],
       relayer: params[:relayer],
-      sent_by_system: false
+      sent_by_system: false,
+      chat: Chat.find_or_create_by(name: params[:phone])
     )
 
     respond_to do |format|

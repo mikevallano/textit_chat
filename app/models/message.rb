@@ -1,6 +1,7 @@
 require 'rest_client'
 
 class Message < ActiveRecord::Base
+  belongs_to :chat
   @@system_sms_phone_name = "DKT"
   @@system_sms_phone_number = "+441234480329"
 

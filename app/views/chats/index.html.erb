@@ -1,0 +1,20 @@
+<h1>Listing chats</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @chats.each do |chat| %>
+      <tr>
+        <td><%= chat.name %></td>
+        <td><%= link_to 'Show', chat %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
