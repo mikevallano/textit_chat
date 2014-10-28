@@ -1,10 +1,3 @@
-# require 'uri'
-# require 'net/http'
-# require 'net/https'
-
-
-require 'rest_client'
-
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
 
@@ -33,29 +26,18 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(message_params)
+    @message.sent_by_system = true
+    @message.from = Message.system_sms_phone_number
+    # @message.to = "+34664762530"
+    last_message = Message.where(sent_by_system: false).order("created_at desc").first
+    @message.to = last_message.from
 
     respond_to do |format|
       if @message.save
-        last_message = @message.where(to: "DKT - OAP").first
-
-        textit_endpoint = "https://api.textit.in/api/v1/messages.json"
-        RestClient.post(
-          textit_endpoint,
-          {
-            "text" => @message.message,
-            "phone" => last_message.from
-          },
-          {
-            "Content-Type" => 'application/json',
-            'Authorization' => "Token 3c1a5032e340eca98b900e2e6a268e525816b4dc"
-          }
-        )
-
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
-        format.json { render :show, status: :created, location: @message }
+        @message.send_textit_sms
+        format.html { redirect_to messages_path, notice: 'Message was successfully created.' }
       else
         format.html { render :new }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -72,10 +54,11 @@ class MessagesController < ApplicationController
   def create_from_textit
     # pry
     @message = Message.new(
-      to: "DKT - OAP",
+      to: Message.system_sms_phone_number,
       from: params[:phone],
-      message: params[:text]
-      # relayer: params[:relayer]
+      message: params[:text],
+      relayer: params[:relayer],
+      sent_by_system: false
     )
 
     respond_to do |format|

@@ -1,5 +1,8 @@
+require 'rest_client'
+
 class Message < ActiveRecord::Base
   @@waiting = true
+  @@system_sms_phone_number = "DKT"
 
   def self.waiting
     @@waiting
@@ -7,5 +10,24 @@ class Message < ActiveRecord::Base
 
   def self.waiting=(state)
     @@waiting = state
+  end
+
+  def self.system_sms_phone_number
+    @@system_sms_phone_number
+  end
+
+  def send_textit_sms
+    textit_endpoint = "https://api.textit.in/api/v1/messages.json"
+    RestClient.post(
+      textit_endpoint,
+      {
+        "text" => message,
+        "phone" => to
+      },
+      {
+        "Content-Type" => 'application/json',
+        'Authorization' => "Token 3c1a5032e340eca98b900e2e6a268e525816b4dc"
+      }
+    )
   end
 end
