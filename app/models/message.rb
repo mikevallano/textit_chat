@@ -23,7 +23,8 @@ class Message < ActiveRecord::Base
       },
       {
         "Content-Type" => 'application/json',
-        'Authorization' => "Token 3c1a5032e340eca98b900e2e6a268e525816b4dc"
+        # 'Authorization' => "Token 3c1a5032e340eca98b900e2e6a268e525816b4dc" # SPAIN
+        'Authorization' => "Token 5e468a10abab2274ff013cc42acd3dfd064a4a82" # UK
       }
     )
   end
