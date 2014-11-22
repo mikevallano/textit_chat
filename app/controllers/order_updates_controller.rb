@@ -3,7 +3,8 @@ class OrderUpdatesController < ApplicationController
     o = current_user.orders.find(params[:order_id])
 
     if o 
-      up = current_user.order_updates.build(order_update_params)
+      up = current_user.order_updates.where(order_id: o.id).first
+      up.update_attributes(order_update_params)
       up.order_id = o.id
 
       if up.save
