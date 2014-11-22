@@ -5,6 +5,8 @@ class Message < ActiveRecord::Base
   @@system_sms_phone_name = "DKT"
   @@system_sms_phone_number = "+441234480329"
 
+  before_save :set_sent_at
+
   def self.system_sms_phone_number
     @@system_sms_phone_number
   end
@@ -31,5 +33,9 @@ class Message < ActiveRecord::Base
 
   def beneficiary_message?
     to == Message.system_sms_phone_number
+  end
+
+  def set_sent_at
+    self.sent_at ||= Time.zone.now
   end
 end

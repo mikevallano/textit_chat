@@ -11,6 +11,7 @@ class ChatsController < ApplicationController
       @chat = @chats.find(chat_id)
       @message = Message.new
       @messages = @chat.messages
+      user.update_last_read(@chat)
     end
     
   end
