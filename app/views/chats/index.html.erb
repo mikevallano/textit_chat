@@ -5,14 +5,22 @@
       <h3>Subscribed chats</h3>
 
       <ul class="list-group">
-        <li class="list-group-item">
-          <span class="badge">14</span>
-          Cras justo odio
-        </li>
+        <% @chats.each do |chat| %>
+          <%= content_tag "a", href: url_for(chat_id: chat.id) do %>
+            <li class="list-group-item">
+              <span class="badge">14</span>
+              <%= chat.name %>
+            </li>
+          <% end %>
+        <% end %>
       </ul>
     </div>
     <div class="col-sm-9">
-
+      <% if @chat %>
+        <%= render 'chats/show' %>
+      <% else %>
+        <h1>Select a chat on the left</h1>
+      <% end %>
     </div>
   </div>
 </div>

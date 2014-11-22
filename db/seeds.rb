@@ -10,5 +10,12 @@
   "marvinmarnold@gmail.com" => "marvinsafe2choose",
   "rodrigo@dktinternational.org" => "rodrigosafe2choose"
 }.each do |k, v|
-  User.create!(email: k, password: v)
+  u = User.create!(email: k, password: v)
+  20.times do 
+    from = rand(10000000000)
+    chat = u.chats.create!(name: from)
+    rand(20).times do 
+      chat.messages.create!(from: from, to: Message.system_sms_phone_number, message: Faker::Lorem.sentence, sent: true, sent_at: Time.now)
+    end
+  end
 end

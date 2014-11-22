@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'pages#index'
 
-  resources :chats
+  get "chats" => "chats#index"
 
   resources :messages do
     collection do
