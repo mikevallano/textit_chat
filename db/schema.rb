@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141122142638) do
+ActiveRecord::Schema.define(version: 20141122165016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,27 @@ ActiveRecord::Schema.define(version: 20141122142638) do
   end
 
   add_index "messages", ["chat_id"], name: "index_messages_on_chat_id", using: :btree
+
+  create_table "order_updates", force: true do |t|
+    t.string   "confirmation_code"
+    t.integer  "user_id"
+    t.integer  "order_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "order_updates", ["order_id"], name: "index_order_updates_on_order_id", using: :btree
+  add_index "order_updates", ["user_id"], name: "index_order_updates_on_user_id", using: :btree
+
+  create_table "orders", force: true do |t|
+    t.string   "beneficiary_number"
+    t.float    "subtotal"
+    t.float    "shipping"
+    t.float    "taxes"
+    t.string   "state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "subscriptions", force: true do |t|
     t.integer  "user_id"

@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
+  get 'orders' => "orders#index"
+
   devise_for :users
   root 'pages#index'
 
   get "chats" => "chats#index"
 
-  resources :messages do
-    collection do
-      post 'create_from_textit'
-      post 'start_from_textit'
-      get 'clear_wait'
-    end
-  end
+  post 'messages/create_from_textit' => "messages#create_from_textit"
+  post 'messages/create' => "messages#create"
+  get 'messages' => "messages#index"
+
+  get 'orders' => "orders#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

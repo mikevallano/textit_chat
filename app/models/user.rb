@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :subscriptions
   has_many :chats, through: :subscriptions
+  has_many :order_updates
+  has_many :orders, through: :order_updates
 
   def unread_messages(chat)
     s = subscriptions.where(chat_id: chat.id).first
