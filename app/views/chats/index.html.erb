@@ -1,21 +1,18 @@
 <%= render 'shared/navbar' %>
-<h1>Listing chats</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3">
+      <h3>Subscribed chats</h3>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <span class="badge">14</span>
+          Cras justo odio
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-9">
 
-  <tbody>
-    <% @chats.each do |chat| %>
-      <tr>
-        <td><%= chat.name %></td>
-        <td><%= link_to 'Show', chat %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+    </div>
+  </div>
+</div>
