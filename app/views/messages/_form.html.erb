@@ -10,19 +10,17 @@
       </ul>
     </div>
   <% end %>
-    
 
-    <div class="row">
-      <div class="col-sm-11">
-        <div class="form-group">
-          <%= f.text_area :message, placeholder: "Enter text to send message", class: "form-control" %>
-          <%= hidden_field_tag 'destination', @chat.name %>
-        </div>
+  <div class="row">
+    <div class="col-sm-11">
+      <div class="form-group">
+        <%= f.text_area :message, placeholder: "Enter text to send message", class: "form-control" %>
+        <%= hidden_field_tag 'destination', @chat.name %>
       </div>
     </div>
-    <div class="row">
-      <%= f.submit "Send message", class: "btn btn-lg btn-info" %>
-    </div>
-
+  </div>
+  <div class="row">
+    <%= f.submit "Send message", class: "btn btn-lg btn-info" %>
+  </div>
   
 <% end %>

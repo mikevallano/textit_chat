@@ -14,13 +14,19 @@
   20.times do 
     from = rand(10000000000)
     chat = u.chats.create!(name: from)
+
+    #Create orders
+    if rand < 0.5
+      o = u.orders.create!(beneficiary_number: from, subtotal: 100, shipping: 10, taxes: 5)
+    end
+
+    # Create messages
     rand(20).times do
       if rand < 0.5
         chat.messages.create!(from: from, to: Message.system_sms_phone_number, message: Faker::Lorem.sentence, sent: true, sent_at: Time.zone.now)
       else
         chat.messages.create!(to: from, from: Message.system_sms_phone_number, message: Faker::Lorem.sentence, sent: true, sent_at: Time.zone.now)
       end
-      
     end
   end
 end

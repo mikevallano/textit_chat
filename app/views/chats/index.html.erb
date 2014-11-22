@@ -6,7 +6,7 @@
 
       <ul class="list-group">
         <% @chats.each do |chat| %>
-          <%= content_tag "a", href: url_for(chat_id: chat.id), class: "chat-entry" do %>
+          <%= content_tag "a", href: url_for(chat_id: chat.id) do %>
             <li class="list-group-item">
               <span class="badge"><%= current_user.unread_messages(chat).size %></span>
               <%= chat.name %>

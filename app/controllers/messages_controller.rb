@@ -1,13 +1,4 @@
 class MessagesController < ApplicationController
-  before_action :set_message, only: [:show, :edit, :update, :destroy]
-
-  # GET /messages
-  # GET /messages.json
-  def index
-    @messages = Message.all
-    @message = Message.new
-  end
-
 
   # POST /messages
   # POST /messages.json
@@ -51,5 +42,11 @@ class MessagesController < ApplicationController
       end
     end
   end
+
+  private
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def message_params
+      params.require(:message).permit(:message)
+    end
 
 end

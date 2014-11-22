@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= "Order details - #{@order}" %></h1>
+
+<br/>
+
+<div class="row">
+  <div class="col-sm-4">
+    <h3>Information</h3>
+    <ul class="list-group">
+      <li class="list-group-item"><strong>Order number: </strong><%= @order.order_number %></li>
+      <li class="list-group-item"><strong>State: </strong><%= @order.state %></li>
+      <li class="list-group-item"><strong>Confirmation code: </strong><%= @order.confirmation_code %></li>
+      <li class="list-group-item"><strong>Customer phone: </strong><%= @order.beneficiary_number %></li>
+      <li class="list-group-item"><strong>Date: </strong><%= @order.created_at %></li>
+    </ul>
+  </div>
+
+  <div class="col-sm-4">
+    <h3>Billing details</h3>
+    <ul class="list-group">
+      <li class="list-group-item"><strong>Subtotal: </strong><%= @order.subtotal %></li>
+      <li class="list-group-item"><strong>Shipping: </strong><%= @order.shipping %></li>
+      <li class="list-group-item"><strong>Taxes: </strong><%= @order.taxes %></li>
+      <li class="list-group-item disabled"><strong>Total: </strong><%= @order.total %></li>
+    </ul>
+  </div>
+</div>
+
+<hr>
+
+<% if @order.pending? %>
+  <%= form_for(@order_update, html: {class: "form-horizontal", role: "form"}) do |f| %>
+    <% if @order_update.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@order_update.errors.count, "error") %> prohibited this update from being saved:</h2>
+
+        <ul>
+        <% @order_update.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+      
+
+      <div class="row">
+        <div class="col-sm-11">
+          <div class="form-group">
+            <%= f.text_area :confirmation_code, placeholder: "Enter order verification code", class: "form-control" %>
+            <%= hidden_field_tag 'order_id', @order.id %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <%= f.submit "Validate order", class: "btn btn-lg btn-info" %>
+      </div>
+  <% end %>
+<% end %>

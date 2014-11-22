@@ -1,1 +1,27 @@
-hi
+<%= render 'shared/navbar' %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3">
+      <h3>Assigned orders</h3>
+
+      <ul class="list-group">
+        <% @orders.each do |order| %>
+          <%= content_tag "a", href: url_for(order_id: order.id) do %>
+            <li class="list-group-item">
+              <span class="badge"><%= order.state %></span>
+              <%= order %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-sm-9">
+      <% if @order %>
+        <%= render 'orders/show' %>
+      <% else %>
+        <h1>Select an order on the left</h1>
+      <% end %>
+    </div>
+  </div>
+</div>

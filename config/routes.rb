@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'order_updates/create'
+
   get 'orders' => "orders#index"
 
   devise_for :users
@@ -7,10 +9,12 @@ Rails.application.routes.draw do
   get "chats" => "chats#index"
 
   post 'messages/create_from_textit' => "messages#create_from_textit"
-  post 'messages/create' => "messages#create"
+  post 'messages' => "messages#create"
   get 'messages' => "messages#index"
 
   get 'orders' => "orders#index"
+
+  post 'order_updates' => "order_updates#create"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
