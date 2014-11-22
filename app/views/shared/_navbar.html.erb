@@ -1,0 +1,18 @@
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= content_tag "a", class: "navbar-brand" do %>
+        <%= image_tag "brand.png", alt: "safe2choose" %>
+      <% end %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="s2c-navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <%= button_to "Sign out", destroy_user_session_path, method: "delete", class: "btn btn-danger navbar-btn" %>
+
+      </ul>
+    </div><!-- /.navbar-collapse -->
+
+  </div>
+</nav>
