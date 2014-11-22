@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'pages#index'
+
   resources :chats
 
   resources :messages do
