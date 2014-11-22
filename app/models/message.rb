@@ -28,4 +28,8 @@ class Message < ActiveRecord::Base
       }
     )
   end
+
+  def beneficiary_message?
+    to == Message.system_sms_phone_number
+  end
 end
