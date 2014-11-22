@@ -11,9 +11,11 @@ class ChatsController < ApplicationController
       @chat = @chats.find(chat_id)
       @message = Message.new
       @messages = @chat.messages
-      user.update_last_read(@chat)
+      @messages = @messages.sort { |x,y| y.sent_at <=> x.sent_at }
+      current_user.update_last_read(@chat)
     end
-    
+
+    @chats = @chats.sort  { |x,y| y.most_recent_message_time <=> x.most_recent_message_time }
   end
 
 end

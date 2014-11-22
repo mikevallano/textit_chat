@@ -35,7 +35,7 @@ class MessagesController < ApplicationController
     respond_to do |format|
       if @message.save
         @message.send_textit_sms
-        format.html { redirect_to @message.chat, notice: 'Message was successfully created.' }
+        format.html { redirect_to chats_path(chat_id: @message.chat.id), notice: 'Message was successfully created.' }
       else
         format.html { render :new }
       end
