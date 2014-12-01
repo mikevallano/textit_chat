@@ -1,19 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Phone number:</strong>
-  <%= @client.phone_number %>
-</p>
+<h1><%= "Client details - #{@client}" %></h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @client.name %>
-</p>
+<br/>
 
-<p>
-  <strong>Address:</strong>
-  <%= @client.address %>
-</p>
+<div class="row">
+  <div class="col-sm-4">
+    <h3>Client Information</h3>
+    <ul class="list-group">
+      <li class="list-group-item"><strong>Phone number: </strong><%= @client.phone_number %></li>
+      <li class="list-group-item"><strong>Name: </strong><%= @client.name %></li>
+      <li class="list-group-item"><strong>Address: </strong><%= @client.address %></li>
+    </ul>
+  </div>
 
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
+  <div class="col-sm-8">
+    <h3>Order history</h3>
+      <ul class="list-group">
+        <% @client.orders.each do |order| %>
+          <%= content_tag 'a', href: orders_path(order_id: order.id) do %>
+            <li class="list-group-item">
+              <strong><%= order.updated_at %></strong> - <%= order %> - <%= order.state %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+  </div>
+</div>

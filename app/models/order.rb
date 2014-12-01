@@ -51,6 +51,10 @@ class Order < ActiveRecord::Base
     client.phone_number
   end
 
+  def product
+    "TODO: PRODUCT NAME"
+  end
+
   def self.STATE_NONE
     @@STATE_NONE
   end
