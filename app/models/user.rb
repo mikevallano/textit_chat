@@ -22,4 +22,10 @@ class User < ActiveRecord::Base
     s = subscriptions.where(chat_id: chat.id).first
     s.update!(last_read_at: Time.zone.now)
   end
+
+  def self.subscribe_all(chat)
+    all.each do |u|
+      Subscription.create(user: u, chat: chat)
+    end
+  end
 end

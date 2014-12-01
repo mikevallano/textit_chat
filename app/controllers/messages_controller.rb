@@ -23,22 +23,28 @@ class MessagesController < ApplicationController
   # POST /messages/create_from_textit
   # POST /messages/create_from_textit.json
   def create_from_textit
-    @message = Message.new(
-      to: Message.system_sms_phone_number,
-      from: params[:phone],
-      message: params[:text],
-      relayer: params[:relayer],
-      sent_by_system: false,
-      chat: Chat.find_or_create_by(name: params[:phone])
-    )
+    chat_name = params[:phone]
+    if chat_name.present?
+      chat = Chat.find_or_create_by(name: chat_name)
+      @message = Message.new(
+        to: Message.system_sms_phone_number,
+        from: chat_name,
+        message: params[:text],
+        relayer: params[:relayer],
+        sent_by_system: false,
+        chat: chat
+      )
 
-    respond_to do |format|
-      if @message.save
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
-        format.json { render :show, status: :created, location: @message }
-      else
-        format.html { render :new }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
+      User.subscribe_all chat
+
+      respond_to do |format|
+        if @message.save
+          format.html { redirect_to @message, notice: 'Message was successfully created.' }
+          format.json { render :show, status: :created, location: @message }
+        else
+          format.html { render :new }
+          format.json { render json: @message.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
