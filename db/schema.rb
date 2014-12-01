@@ -18,9 +18,12 @@ ActiveRecord::Schema.define(version: 20141201193020) do
 
   create_table "chats", force: true do |t|
     t.string   "name"
+    t.integer  "client_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "chats", ["client_id"], name: "index_chats_on_client_id", using: :btree
 
   create_table "clients", force: true do |t|
     t.string   "phone_number"

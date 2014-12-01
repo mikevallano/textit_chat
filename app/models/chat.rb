@@ -1,6 +1,7 @@
 class Chat < ActiveRecord::Base
   has_many :messages
   has_many :subscriptions
+  belongs_to :client
 
   def most_recent_message_time
      m = messages.order("sent_at DESC").first

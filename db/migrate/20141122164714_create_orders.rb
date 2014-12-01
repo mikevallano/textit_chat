@@ -6,6 +6,7 @@ class CreateOrders < ActiveRecord::Migration
       t.float :shipping
       t.float :taxes
       t.string :state
+      t.belongs_to :client, index: true
 
       t.timestamps
     end
