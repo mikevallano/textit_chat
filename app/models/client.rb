@@ -7,7 +7,7 @@ class Client < ActiveRecord::Base
   end
 
   def state
-    orders.present? ? orders.first.state : "No orders requested"
+    orders.present? ? orders.first.state : Order.STATE_NONE
   end
 
   def to_s
