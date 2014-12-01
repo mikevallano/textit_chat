@@ -11,13 +11,15 @@
   "rodrigo@dktinternational.org" => "rodrigosafe2choose"
 }.each do |k, v|
   u = User.create!(email: k, password: v)
-  20.times do 
+  20.times do
     from = rand(10000000000)
-    chat = u.chats.create!(name: from)
+    client = Client.create!(phone_number: from)
+    chat = u.chats.create!(client: client)
+
 
     #Create orders
     if rand < 0.5
-      o = u.orders.create!(beneficiary_number: from, subtotal: 100, shipping: 10, taxes: 5)
+      o = u.orders.create!(client: client, subtotal: 100, shipping: 10, taxes: 5)
     end
 
     # Create messages

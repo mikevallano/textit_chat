@@ -66,9 +66,12 @@ ActiveRecord::Schema.define(version: 20141201193020) do
     t.float    "shipping"
     t.float    "taxes"
     t.string   "state"
+    t.integer  "client_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "orders", ["client_id"], name: "index_orders_on_client_id", using: :btree
 
   create_table "subscriptions", force: true do |t|
     t.integer  "user_id"

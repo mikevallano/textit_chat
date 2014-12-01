@@ -2,7 +2,7 @@ class Order < ActiveRecord::Base
   has_many :order_updates
   belongs_to :client
   before_save :set_default_state
-  validates :beneficiary_number, :subtotal, :shipping, :taxes,
+  validates :subtotal, :shipping, :taxes,
     presence: true
 
   def confirm
