@@ -32,4 +32,8 @@ class Order < ActiveRecord::Base
   def pending?
     state == "Pending"
   end
+
+  def client_number
+    client.phone_number
+  end
 end

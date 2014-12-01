@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 20141201193020) do
   enable_extension "plpgsql"
 
   create_table "chats", force: true do |t|
-    t.string   "name"
     t.integer  "client_id"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -7,4 +7,8 @@ class Chat < ActiveRecord::Base
      m = messages.order("sent_at DESC").first
      m ? m.sent_at : 10.years.ago
   end
+
+  def name
+    client.phone_number
+  end
 end
