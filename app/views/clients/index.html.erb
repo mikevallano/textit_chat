@@ -1,29 +1,26 @@
-<h1>Listing clients</h1>
+<%= render 'shared/navbar' %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3">
+      <h3>Registered clients</h3>
 
-<table>
-  <thead>
-    <tr>
-      <th>Phone number</th>
-      <th>Name</th>
-      <th>Address</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @clients.each do |client| %>
-      <tr>
-        <td><%= client.phone_number %></td>
-        <td><%= client.name %></td>
-        <td><%= client.address %></td>
-        <td><%= link_to 'Show', client %></td>
-        <td><%= link_to 'Edit', edit_client_path(client) %></td>
-        <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Client', new_client_path %>
+      <ul class="list-group">
+        <% @clients.each do |client| %>
+          <%= content_tag "a", href: url_for(client_id: client.id) do %>
+            <li class="list-group-item">
+              <span class="badge"><%= client.state %></span>
+              <%= client %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-sm-9">
+      <% if @client %>
+        <%= render 'clients/show' %>
+      <% else %>
+        <h1>Select a client on the left</h1>
+      <% end %>
+    </div>
+  </div>
+</div>

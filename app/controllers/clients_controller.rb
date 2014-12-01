@@ -5,16 +5,20 @@ class ClientsController < ApplicationController
 
   def index
     @clients = Client.all
-    respond_with(@clients)
+    client_id = params[:client_id]
+
+    if client_id
+      @client = @clients.find(client_id)
+    end
+
   end
 
   def show
-    respond_with(@client)
+    redirect_to clients_path(client_id: @client.id)
   end
 
   def new
     @client = Client.new
-    respond_with(@client)
   end
 
   def edit
@@ -23,17 +27,14 @@ class ClientsController < ApplicationController
   def create
     @client = Client.new(client_params)
     @client.save
-    respond_with(@client)
   end
 
   def update
     @client.update(client_params)
-    respond_with(@client)
   end
 
   def destroy
     @client.destroy
-    respond_with(@client)
   end
 
   private

@@ -29,7 +29,7 @@
 
 <hr>
 
-<% if @order.pending? %>
+<% if @order.pending_payment? %>
   <%= form_for(@order_update, html: {class: "form-horizontal", role: "form"}) do |f| %>
     <% if @order_update.errors.any? %>
       <div id="error_explanation">

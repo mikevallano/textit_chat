@@ -25,6 +25,7 @@ class MessagesController < ApplicationController
   def create_from_textit
     chat_name = params[:phone]
     if chat_name.present?
+      # client = Client.create!(phone_number: )
       chat = Chat.find_or_create_by(name: chat_name)
       @message = Message.new(
         to: Message.system_sms_phone_number,

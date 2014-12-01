@@ -5,4 +5,12 @@ class Client < ActiveRecord::Base
   def chat
     chats.present? ? chats.first : chats
   end
+
+  def state
+    orders.present? ? orders.first.state : "No orders requested"
+  end
+
+  def to_s
+    phone_number
+  end
 end
