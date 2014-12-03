@@ -3,7 +3,7 @@ require 'rest_client'
 class Message < ActiveRecord::Base
   belongs_to :chat
   @@system_sms_phone_name = "DKT"
-  @@system_sms_phone_number = "+441234480329"
+  @@system_sms_phone_number = "+441618504838"
 
   before_save :set_sent_at
 
@@ -29,6 +29,24 @@ class Message < ActiveRecord::Base
         'Authorization' => "Token 5e468a10abab2274ff013cc42acd3dfd064a4a82" # UK
       }
     )
+  end
+
+  def self.create_from_textit(params)
+    chat_name = params[:phone]
+    if chat_name.present?
+      client = Client.find_or_create_by(phone_number: chat_name)
+      chat = client.chats.first_or_create!
+
+      @message = Message.new(
+        to: Message.system_sms_phone_number,
+        from: chat_name,
+        sent_at: Time.zone.now,
+        message: params[:text],
+        sent_by_system: false,
+        chat: chat
+      )
+
+    end
   end
 
   def beneficiary_message?
