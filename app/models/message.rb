@@ -37,7 +37,7 @@ class Message < ActiveRecord::Base
       client = Client.find_or_create_by(phone_number: chat_name)
       chat = client.chats.first_or_create!
 
-      @message = Message.new(
+      return Message.create(
         to: Message.system_sms_phone_number,
         from: chat_name,
         sent_at: Time.zone.now,
@@ -45,8 +45,20 @@ class Message < ActiveRecord::Base
         sent_by_system: false,
         chat: chat
       )
-
     end
+
+    return nil
+  end
+
+  def self.new_from_chat(params)
+    message = Message.new(params)
+    message.sent_by_system = true
+    message.from = Message.system_sms_phone_number
+    client = Client.find_or_create_by(phone_number: message.to)
+    chat = client.chats.first_or_create!
+    message.chat = chat
+
+    message
   end
 
   def beneficiary_message?
