@@ -15,7 +15,7 @@
     <div class="col-sm-11">
       <div class="form-group">
         <%= f.text_area :message, placeholder: "Enter text to send message", class: "form-control" %>
-        <%= hidden_field_tag 'to', @chat.name %>
+        <%= hidden_field_tag 'message[to]', @chat.name %>
       </div>
     </div>
   </div>

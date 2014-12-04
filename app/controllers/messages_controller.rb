@@ -7,6 +7,8 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
+        # binding.pry
+
         @message.send_textit_sms
         format.html { redirect_to chats_path(chat_id: @message.chat.id), notice: 'Message was successfully created.' }
       else
@@ -25,7 +27,7 @@ class MessagesController < ApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def message_params
-      params.require(:message).permit(:message)
+      params.require(:message).permit(:message, :to)
     end
 
 end
