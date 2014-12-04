@@ -10,4 +10,9 @@ class OrdersController < ApplicationController
 
     @orders = @orders.sort  { |x,y| y.created_at <=> x.created_at }
   end
+
+  # POST /orders/create_from_textit
+  def create_from_textit
+    @order = Order.create_from_textit params
+  end
 end

@@ -18,6 +18,9 @@ class Order < ActiveRecord::Base
     update(state: "Payment received") if pending_payment?
   end
 
+  def self.create_from_textit
+
+  end
 
   def set_default_state
     self.state ||= Order.STATE_DEFAULT

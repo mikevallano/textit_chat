@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'order_updates/create'
 
   get 'orders' => "orders#index"
+  post 'orders/create_from_textit' => "orders#create_from_textit"
 
   devise_for :users
   root 'pages#index'
