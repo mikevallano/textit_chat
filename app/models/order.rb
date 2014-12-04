@@ -10,6 +10,10 @@ class Order < ActiveRecord::Base
   @@STATE_PAYMENT_CONFIRMED = "Payment confirmed"
   @@STATE_PERSCRIPTION_CONFIRMED = "Perscription confirmed"
 
+  @@DEFAULT_SUBTOTAL = 100
+  @@DEFAULT_SHIPPING = 0
+  @@DEFAULT_TAXES = 0
+
   def confirm_perscription
     update(state: "Perscription filled") if pending_perscription?
   end
@@ -18,8 +22,14 @@ class Order < ActiveRecord::Base
     update(state: "Payment received") if pending_payment?
   end
 
-  def self.create_from_textit
+  def self.create_from_textit(params)
+    client = Client.find_or_create_by(phone_number: params[:phone])
 
+    client.orders.create!(
+      subtotal: Order.DEFAULT_SUBTOTAL,
+      shipping: Order.DEFAULT_SHIPPING,
+      taxes:    Order.DEFAULT_TAXES
+    )
   end
 
   def set_default_state
@@ -72,5 +82,17 @@ class Order < ActiveRecord::Base
 
   def self.STATE_PERSCRIPTION_CONFIRMED
     @@STATE_PAYMENT_CONFIRMED
+  end
+
+  def self.DEFAULT_SUBTOTAL
+    @@DEFAULT_SUBTOTAL
+  end
+
+  def self.DEFAULT_SHIPPING
+    @@DEFAULT_SHIPPING
+  end
+
+  def self.DEFAULT_TAXES
+    @@DEFAULT_TAXES
   end
 end
