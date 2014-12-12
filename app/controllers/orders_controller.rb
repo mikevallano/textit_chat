@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  layout "two_column"
+
   def index
     @orders = current_user.orders
     order_id = params[:order_id]

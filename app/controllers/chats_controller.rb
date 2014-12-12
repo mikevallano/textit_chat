@@ -1,4 +1,5 @@
 class ChatsController < ApplicationController
+  layout "two_column"
 
   # GET /chats
   # GET /chats.json
