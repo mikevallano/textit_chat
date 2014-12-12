@@ -2,8 +2,11 @@ namespace :seed do
   desc "Seeds DB with predefines FAQs"
   task faqs: :environment do
     {
-      "" => "",
-    }
+      "What are abortion pills?" => "Abortion pills are prescribed tablets that can be used to induce an abortion during the first 9 weeks of pregnancy. The active ingredient in these pills is called Mifepristone and is sometimes taken with Misoprostol.",
+      "Are all brands of mifepristone and misoprostol equally effective?" => "No. Some manufacturers and shipping conditions are known to make these drugs ineffective or harmful. Safe2Choose only uses the best suppliers and we use double-aluminum blister packs to ensure quality."
+    }.each do |q, a|
+      Faq.create!(question: q, answer: a)
+    end
   end
 
   desc "Seeds DB with random users, chats, and orders"
