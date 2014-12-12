@@ -12,9 +12,25 @@
   <% end %>
 
   <div class="row">
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="faqs" data-toggle="dropdown" aria-expanded="true">
+        FAQs
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="faqs">
+        <% @faqs.each do |faq| %>
+          <li role="presentation"><%= link_to faq, url_for(chat_id: @chat.id, faq_id: faq.id), role: "menuitem", tabindex: "-1"%></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <br/>
+
+  <div class="row">
     <div class="col-sm-11">
       <div class="form-group">
-        <%= f.text_area :message, placeholder: "Enter text to send message", class: "form-control" %>
+        <%= f.text_area :message, value: message_value(@faq), placeholder: message_placeholder(@faq), class: "form-control" %>
         <%= hidden_field_tag 'message[to]', @chat.name %>
       </div>
     </div>

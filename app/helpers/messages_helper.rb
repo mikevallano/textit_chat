@@ -10,4 +10,12 @@ module MessagesHelper
       return "col-sm-6 col-sm-offset-5 well"
     end
   end
+
+  def message_placeholder(faq)
+    faq.blank? ? "Enter text to send message" : faq.answer
+  end
+
+  def message_value(faq)
+    faq.blank? ? nil : faq.answer
+  end
 end

@@ -11,7 +11,7 @@
 <hr>
 
 <% @messages.each do |message| %>
-  <div class="row"> 
+  <div class="row">
     <%= content_tag "div", class: message_format_tag(message) do %>
       <strong><%= sanitize_to_field message.from %></strong>: <%= message.message %>
       <p class="text-muted"><%= message.sent_at %></p>
