@@ -10,6 +10,7 @@ class PushNotification < ActiveRecord::Base
           messages_sent[c.id] = true
           m = Message.new_push_notification(c.phone_number, n.message)
           if m.save
+            m.send_textit_sms
             SentPushNotification.create!(client: c, push_notification: n)
             i += 1
           end
