@@ -5,6 +5,8 @@ class Order < ActiveRecord::Base
   validates :subtotal, :shipping, :taxes,
     presence: true
 
+  has_paper_trail
+
   @@STATE_NONE = "No orders requested"
   @@STATE_DEFAULT = "Pending payment confirmation"
   @@STATE_PAYMENT_CONFIRMED = "Payment confirmed"

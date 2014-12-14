@@ -50,3 +50,4 @@ gem "twitter-bootstrap-rails"
 gem 'devise'
 gem 'faker'
 gem "pundit"
+gem 'paper_trail'

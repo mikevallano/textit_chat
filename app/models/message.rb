@@ -7,6 +7,8 @@ class Message < ActiveRecord::Base
 
   before_save :set_sent_at
 
+  has_paper_trail
+
   def self.system_sms_phone_number
     @@system_sms_phone_number
   end

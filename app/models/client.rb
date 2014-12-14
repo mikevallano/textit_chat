@@ -4,6 +4,8 @@ class Client < ActiveRecord::Base
   has_many :sent_push_notifications
   has_many :push_notifications, through: :sent_push_notifications
 
+  has_paper_trail
+
   def chat
     chats.present? ? chats.first : chats
   end

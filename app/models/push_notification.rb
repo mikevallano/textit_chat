@@ -1,4 +1,6 @@
 class PushNotification < ActiveRecord::Base
+  has_paper_trail
+
   def self.push
     messages_sent = {}
     i = 0
