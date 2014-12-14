@@ -37,7 +37,7 @@ class Message < ActiveRecord::Base
       client = Client.find_or_create_by(phone_number: chat_name)
       chat = client.chats.first_or_create!
 
-      return Message.create(
+      message = Message.create(
         to: Message.system_sms_phone_number,
         from: chat_name,
         sent_at: Time.zone.now,
@@ -45,6 +45,10 @@ class Message < ActiveRecord::Base
         sent_by_system: false,
         chat: chat
       )
+
+      User.subscribe_all(chat)
+
+      return message
     end
 
     return nil
