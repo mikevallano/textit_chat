@@ -21,7 +21,7 @@ class Client < ActiveRecord::Base
     if client_num.present?
       client = Client.find_or_create_by(phone_number: client_num)
 
-      client.update_params general_information_requested: true
+      client.update_attributes general_information_requested: true
     end
   end
 end
