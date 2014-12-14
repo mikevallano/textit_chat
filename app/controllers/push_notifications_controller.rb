@@ -39,7 +39,7 @@ class PushNotificationsController < ApplicationController
   end
 
   def push
-    PushNotification.push
+    @i = PushNotification.push
   end
 
   private

@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   post 'orders/create_from_textit' => "orders#create_from_textit"
 
   devise_for :users
+  resources :users
+
   root 'pages#index'
 
   get "chats" => "chats#index"

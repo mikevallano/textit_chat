@@ -1,6 +1,7 @@
 class PushNotification < ActiveRecord::Base
   def self.push
     messages_sent = {}
+    i = 0
     clients = Client.where(general_information_requested: true)
 
     all.each do |n|
@@ -10,9 +11,11 @@ class PushNotification < ActiveRecord::Base
           m = Message.new_push_notification(c.phone_number, n.message)
           if m.save
             SentPushNotification.create!(client: c, push_notification: n)
+            i += 1
           end
         end
       end
     end
+    i
   end
 end

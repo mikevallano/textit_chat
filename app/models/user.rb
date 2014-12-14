@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, 
+  devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :subscriptions
   has_many :chats, through: :subscriptions
@@ -27,5 +27,9 @@ class User < ActiveRecord::Base
     all.each do |u|
       Subscription.create(user: u, chat: chat)
     end
+  end
+
+  def is_admin?
+    is_admin
   end
 end
