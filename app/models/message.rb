@@ -61,6 +61,19 @@ class Message < ActiveRecord::Base
     message
   end
 
+  def self.new_push_notification(to, message)
+    client = Client.find_or_create_by(phone_number: to)
+    chat = client.chats.first_or_create!
+
+    Message.new(
+      sent_at: Time.zone.now,
+      to: to,
+      from: Message.system_sms_phone_number,
+      message: message,
+      chat: chat
+    )
+  end
+
   def beneficiary_message?
     to == Message.system_sms_phone_number
   end

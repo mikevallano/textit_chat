@@ -38,6 +38,10 @@ class PushNotificationsController < ApplicationController
     respond_with(@push_notification)
   end
 
+  def push
+    PushNotification.push
+  end
+
   private
     def set_push_notification
       @push_notification = PushNotification.find(params[:id])

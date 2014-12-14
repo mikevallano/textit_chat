@@ -37,6 +37,10 @@ class ClientsController < ApplicationController
     @client.destroy
   end
 
+  def register_for_general_info
+    Client.register_for_general_info params
+  end
+
   private
     def set_client
       @client = Client.find(params[:id])

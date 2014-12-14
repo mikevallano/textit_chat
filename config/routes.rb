@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
-  resources :push_notifications
+  resources :push_notifications do
+    collection do
+      get 'push'
+    end
+  end
 
   resources :faqs
 
-  resources :clients
+  resources :clients do
+    collection do
+      post 'register_for_general_info'
+    end
+  end
 
   get 'order_updates/create'
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141214131608) do
+ActiveRecord::Schema.define(version: 20141214142514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,11 +30,12 @@ ActiveRecord::Schema.define(version: 20141214131608) do
     t.text     "address"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "general_information_requested", default: false
   end
 
   create_table "faqs", force: true do |t|
-    t.string   "question"
-    t.string   "answer"
+    t.text     "question"
+    t.text     "answer"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -81,7 +82,7 @@ ActiveRecord::Schema.define(version: 20141214131608) do
 
   create_table "push_notifications", force: true do |t|
     t.string   "tag"
-    t.string   "message"
+    t.text     "message"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
