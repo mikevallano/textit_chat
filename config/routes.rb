@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :follow_up_questions
+
   resources :push_notifications do
     collection do
       get 'push'

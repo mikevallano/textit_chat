@@ -21,7 +21,6 @@ class MessagesController < ApplicationController
   # POST /messages/create_from_textit.json
   def create_from_textit
     @message = Message.create_from_textit params
-    User.subscribe_all(chat) if @message.present?
   end
 
   private

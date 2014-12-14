@@ -1,0 +1,2 @@
+module FollowUpQuestionsHelper
+end

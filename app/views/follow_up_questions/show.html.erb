@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @follow_up_question.question %>
+</p>
+
+<%= link_to 'Edit', edit_follow_up_question_path(@follow_up_question), class: "btn btn-link" %> |
+<%= link_to 'Back', follow_up_questions_path, class: "btn btn-link" %>
