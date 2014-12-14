@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :push_notifications
+
   resources :faqs
 
   resources :clients
