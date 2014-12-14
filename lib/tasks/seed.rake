@@ -9,6 +9,16 @@ namespace :seed do
     end
   end
 
+  desc "Seeds DB with predefined follow-up questions"
+  task follows: :environment do
+    [
+      "Where do you live?",
+      "How old are you?"
+    ].each do |q, a|
+      FollowUpQuestion.create!(question: q)
+    end
+  end
+
   desc "Seeds DB with random users, chats, and orders"
   task users_chats_orders: :environment do
     {

@@ -20,6 +20,13 @@ class ChatsController < ApplicationController
       if faq_id
         @faq = @faqs.find(faq_id)
       end
+
+      @follows = FollowUpQuestion.all
+      follow_id = params[:follow_id]
+
+      if follow_id
+        @follow = @follows.find(follow_id)
+      end
     end
 
     @chats = @chats.sort  { |x,y| y.most_recent_message_time <=> x.most_recent_message_time }
