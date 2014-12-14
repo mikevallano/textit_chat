@@ -39,4 +39,14 @@ namespace :seed do
     end
   end
 
+  desc "Seeds DB admins"
+  task admins: :environment do
+    {
+      "marvinmarnold@gmail.com" => "marvinsafe2choose",
+      "rodrigo@dktinternational.org" => "rodrigosafe2choose"
+    }.each do |k, v|
+      u = User.create!(email: k, password: v)
+    end
+  end
+
 end
