@@ -26,11 +26,11 @@ class MessageTest < ActiveSupport::TestCase
     to = "12345"
     text = "Fake text"
     params = { to: to, message: text}
-    message = Message.new_from_chat params
+    message = Message.new_from_chat params, users(:marvin)
     client = Client.find_by(phone_number: to)
 
     assert message.to == to
-    assert message.from == Message.system_sms_phone_number
+    assert message.from == users(:marvin).email
     assert message.message == text
     assert message.sent_by_system == true
     assert message.chat == client.chats.first

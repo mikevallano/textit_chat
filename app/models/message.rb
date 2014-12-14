@@ -59,7 +59,7 @@ class Message < ActiveRecord::Base
   def self.new_from_chat(params, user)
     message = Message.new(params)
     message.sent_by_system = true
-    message.from = User.email
+    message.from = user.email
     client = Client.find_or_create_by(phone_number: message.to)
     chat = client.chats.first_or_create!
     message.chat = chat
