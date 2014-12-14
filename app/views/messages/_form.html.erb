@@ -46,7 +46,7 @@
   <div class="row">
     <div class="col-sm-11">
       <div class="form-group">
-        <%= f.text_area :message, value: message_value(@faq, @follow), placeholder: message_placeholder(@faq, @follow), class: "form-control" %>
+        <%= f.text_area :message, value: message_value(@faq, @follow), placeholder: message_placeholder(@faq, @follow), class: "form-control", rows: "6" %>
         <%= hidden_field_tag 'message[to]', @chat.name %>
       </div>
     </div>
