@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    @message = Message.new_from_chat(message_params)
+    @message = Message.new_from_chat(message_params, current_user)
 
     respond_to do |format|
       if @message.save
