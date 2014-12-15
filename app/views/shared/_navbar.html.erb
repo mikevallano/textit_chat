@@ -20,8 +20,9 @@
               <li><%= link_to "Push notifications", push_notifications_path %></li>
               <li><%= link_to "Follow-up questions", follow_up_questions_path %></li>
               <li><%= link_to "Manage users", users_path %></li>
+              <li><%= link_to "Follow-up questions", follow_up_questions_path %></li>
+              <li><%= link_to "Client health conditions", health_problems_path %></li>
             <% end %>
-            <li><%= link_to "Edit profile", edit_user_password_path(current_user) %></li>
           </ul>
         </li>
         <li><%= button_to "Sign out", destroy_user_session_path, method: "delete", class: "btn btn-danger navbar-btn" %></li>

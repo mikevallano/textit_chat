@@ -32,6 +32,7 @@ class ClientsController < ApplicationController
 
   def update
     @client.update(client_params)
+    redirect_to clients_path(client_id: @client.id)
   end
 
   def destroy
@@ -48,7 +49,8 @@ class ClientsController < ApplicationController
     end
 
     def client_params
-      params.require(:client).permit(:phone_number, :name, :address)
+      params.require(:client).permit(:phone_number, :name, :address, :lanague,
+        :birthday, :has_unwanted, { :health_problem_ids => [] }, :num_children)
     end
 
     def set_clients

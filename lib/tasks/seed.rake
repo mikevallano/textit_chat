@@ -25,7 +25,7 @@ namespace :seed do
       "marvinmarnold@gmail.com" => "marvinsafe2choose",
       "rodrigo@dktinternational.org" => "rodrigosafe2choose"
     }.each do |k, v|
-      u = User.create!(email: k, password: v)
+      u = User.create!(email: k, password: v, is_admin: true)
       20.times do
         from = rand(10000000000)
         client = Client.create!(phone_number: from)

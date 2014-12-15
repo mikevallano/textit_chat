@@ -1,4 +1,4 @@
-<h1>Listing health_problems</h1>
+<h1>Listing Health Problems</h1>
 
 <table>
   <thead>
@@ -12,9 +12,9 @@
     <% @health_problems.each do |health_problem| %>
       <tr>
         <td><%= health_problem.name %></td>
-        <td><%= link_to 'Show', health_problem %></td>
-        <td><%= link_to 'Edit', edit_health_problem_path(health_problem) %></td>
-        <td><%= link_to 'Destroy', health_problem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', health_problem, class: "btn btn-link" %></td>
+        <td><%= link_to 'Edit', edit_health_problem_path(health_problem), class: "btn btn-link" %></td>
+        <td><%= link_to 'Destroy', health_problem, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Health problem', new_health_problem_path %>
+<%= link_to 'New Health problem', new_health_problem_path, class: "btn btn-link" %>

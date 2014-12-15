@@ -6,6 +6,9 @@ class Client < ActiveRecord::Base
   has_many :diagnosed_health_problems
   has_many :health_problems, through: :diagnosed_health_problems
 
+  accepts_nested_attributes_for :diagnosed_health_problems
+  accepts_nested_attributes_for :health_problems
+
   has_paper_trail
 
   def chat
