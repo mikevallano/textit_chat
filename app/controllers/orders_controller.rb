@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   layout "two_column"
+  skip_before_filter :authenticate_user!, :only => :create_from_textit
 
   def index
     @orders = current_user.orders
