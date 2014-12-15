@@ -51,3 +51,4 @@ gem 'devise'
 gem 'faker'
 gem "pundit"
 gem 'paper_trail'
+gem 'pry'

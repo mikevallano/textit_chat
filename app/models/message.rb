@@ -19,6 +19,7 @@ class Message < ActiveRecord::Base
 
   def send_textit_sms
     textit_endpoint = "https://api.textit.in/api/v1/messages.json"
+
     RestClient.post(
       textit_endpoint,
       {
@@ -29,7 +30,7 @@ class Message < ActiveRecord::Base
         "Content-Type" => 'application/json',
         'Authorization' => "Token #{ENV['TEXT_IT_TOKEN']}"
       }
-    )
+    ) unless Rails.env == "test"
   end
 
   def self.create_from_textit(params)

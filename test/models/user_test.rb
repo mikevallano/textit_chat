@@ -12,4 +12,18 @@ class UserTest < ActiveSupport::TestCase
     m = c.messages.create(from: "123", to: "456")
     assert u.unread_messages(c).size == 1
   end
+
+  test "subscribe users to chat" do
+    u = User.create!(email: "fake@faker.com", password: "password")
+    c = Chat.create!
+
+    assert u.chats.size == 0
+
+    u.subscribe_to c
+    assert u.chats(true).size == 1
+
+    u.subscribe_to c
+    assert u.chats(true).size == 1
+
+  end
 end

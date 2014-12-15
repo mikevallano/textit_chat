@@ -25,8 +25,12 @@ class User < ActiveRecord::Base
 
   def self.subscribe_all(chat)
     all.each do |u|
-      Subscription.create(user: u, chat: chat)
+      u.subscribe_to chat
     end
+  end
+
+  def subscribe_to(chat)
+    Subscription.where(user: self, chat:chat).first_or_create!
   end
 
   def is_admin?

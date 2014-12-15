@@ -1,6 +1,7 @@
 class Chat < ActiveRecord::Base
   has_many :messages
   has_many :subscriptions
+  has_many :users, through: :subscriptions
   belongs_to :client
 
   def most_recent_message_time
