@@ -1,26 +1,22 @@
-<%= render 'shared/navbar' %>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-3">
-      <h3>Registered clients</h3>
+<div class="row">
+  <div class="col-sm-3">
+    <h3>Registered clients</h3>
 
-      <ul class="list-group">
-        <% @clients.each do |client| %>
-          <%= content_tag "a", href: url_for(client_id: client.id) do %>
-            <li class="list-group-item">
-              <span class="badge"><%= client.state %></span>
-              <%= client %>
-            </li>
-          <% end %>
+    <ul class="list-group">
+      <% @clients.each do |client| %>
+        <%= content_tag "a", href: url_for(client_id: client.id) do %>
+          <li class="list-group-item">
+            <%= client %>
+          </li>
         <% end %>
-      </ul>
-    </div>
-    <div class="col-sm-9">
-      <% if @client %>
-        <%= render 'clients/show' %>
-      <% else %>
-        <h1>Select a client on the left</h1>
       <% end %>
-    </div>
+    </ul>
+  </div>
+  <div class="col-sm-9">
+    <% if @client %>
+      <%= render 'clients/show' %>
+    <% else %>
+      <h1>Select a client on the left</h1>
+    <% end %>
   </div>
 </div>

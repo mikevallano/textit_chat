@@ -1,10 +1,11 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
+  before_action :set_clients
 
   respond_to :html
+  layout "two_column"
 
   def index
-    @clients = Client.all
     client_id = params[:client_id]
 
     if client_id
@@ -48,5 +49,9 @@ class ClientsController < ApplicationController
 
     def client_params
       params.require(:client).permit(:phone_number, :name, :address)
+    end
+
+    def set_clients
+      @clients = Client.all
     end
 end

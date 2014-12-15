@@ -36,6 +36,5 @@ class MessageTest < ActiveSupport::TestCase
     assert message.chat == client.chats.first
 
     assert client.chats.size == 1
-
   end
 end

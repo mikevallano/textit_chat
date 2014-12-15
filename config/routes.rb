@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :health_problems
+
   resources :follow_up_questions
 
   resources :push_notifications do

@@ -3,6 +3,8 @@ class Client < ActiveRecord::Base
   has_many :orders
   has_many :sent_push_notifications
   has_many :push_notifications, through: :sent_push_notifications
+  has_many :diagnosed_health_problems
+  has_many :health_problems, through: :diagnosed_health_problems
 
   has_paper_trail
 

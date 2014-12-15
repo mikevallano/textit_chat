@@ -11,19 +11,34 @@
       <li class="list-group-item"><strong>Phone number: </strong><%= @client.phone_number %></li>
       <li class="list-group-item"><strong>Name: </strong><%= @client.name %></li>
       <li class="list-group-item"><strong>Address: </strong><%= @client.address %></li>
+      <li class="list-group-item"><strong>Language: </strong><%= @client.language %></li>
+      <li class="list-group-item"><strong>Birthday: </strong><%= @client.birthday %></li>
+      <li class="list-group-item"><strong>Num children: </strong><%= @client.num_children %></li>
     </ul>
   </div>
 
-  <div class="col-sm-8">
-    <h3>Order history</h3>
-      <ul class="list-group">
-        <% @client.orders.each do |order| %>
-          <%= content_tag 'a', href: orders_path(order_id: order.id) do %>
-            <li class="list-group-item">
-              <strong><%= order.updated_at %></strong> - <%= order %> - <%= order.state %>
-            </li>
-          <% end %>
-        </ul>
+  <div class="col-sm-4">
+    <h3>Medical history</h3>
+    <ul class="list-group">
+      <li class="list-group-item"><strong>Unwanted pregancy: </strong><%= @client.has_unwanted %></li>
+      <% @client.health_problems.each do |h| %>
+        <li class="list-group-item"><strong>History of: </strong><%= h %></li>
       <% end %>
+    </ul>
+  </div>
+
+  <div class="col-sm-4">
+    <h3>Order history</h3>
+    <ul class="list-group">
+      <% @client.orders.each do |order| %>
+        <%= content_tag 'a', href: orders_path(order_id: order.id) do %>
+          <li class="list-group-item">
+            <strong><%= order.updated_at %></strong> - <%= order %> - <%= order.state %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
   </div>
 </div>
+
+<%= link_to "Edit client details", edit_client_path(@client), class: "btn btn-lg btn-success" %>

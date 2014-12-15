@@ -1,6 +1,28 @@
-<h1>Editing client</h1>
+<div class="row">
+  <div class="col-sm-3">
+    <h3>Registered clients</h3>
 
-<%= render 'form' %>
+    <ul class="list-group">
+      <% @clients.each do |client| %>
+        <%= content_tag "a", href: url_for(client_id: client.id) do %>
+          <li class="list-group-item">
+            <%= client %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-sm-9">
+    <% if @client %>
+      <h1>Editing client</h1>
 
-<%= link_to 'Show', @client %> |
-<%= link_to 'Back', clients_path %>
+      <%= render 'form' %>
+
+      <%= link_to 'Show', @client, class: "btn btn-link" %> |
+      <%= link_to 'Back', clients_path, class: "btn btn-link" %>
+
+    <% else %>
+      <h1>Select a client on the left</h1>
+    <% end %>
+  </div>
+</div>

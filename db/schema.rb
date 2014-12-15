@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141214191310) do
+ActiveRecord::Schema.define(version: 20141215132503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,23 @@ ActiveRecord::Schema.define(version: 20141214191310) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "general_information_requested", default: false
+    t.string   "country"
+    t.date     "birthday"
+    t.string   "language"
+    t.integer  "num_children"
+    t.boolean  "has_unwanted",                  default: false
+    t.string   "confirmation_method"
   end
+
+  create_table "diagnosed_health_problems", force: true do |t|
+    t.integer  "health_problem_id"
+    t.integer  "client_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "diagnosed_health_problems", ["client_id"], name: "index_diagnosed_health_problems_on_client_id", using: :btree
+  add_index "diagnosed_health_problems", ["health_problem_id"], name: "index_diagnosed_health_problems_on_health_problem_id", using: :btree
 
   create_table "faqs", force: true do |t|
     t.text     "question"
@@ -42,6 +58,12 @@ ActiveRecord::Schema.define(version: 20141214191310) do
 
   create_table "follow_up_questions", force: true do |t|
     t.text     "question"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "health_problems", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
