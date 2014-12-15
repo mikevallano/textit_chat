@@ -50,7 +50,8 @@ class ClientsController < ApplicationController
 
     def client_params
       params.require(:client).permit(:phone_number, :name, :address, :lanague,
-        :birthday, :has_unwanted, { :health_problem_ids => [] }, :num_children)
+        :birthday, :has_unwanted, { :health_problem_ids => [] }, :num_children,
+        :notes)
     end
 
     def set_clients

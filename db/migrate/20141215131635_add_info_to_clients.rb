@@ -7,6 +7,7 @@ class AddInfoToClients < ActiveRecord::Migration
       t.integer :num_children
       t.boolean :has_unwanted, default: false
       t.string :confirmation_method
+      t.text :notes
     end
   end
 end

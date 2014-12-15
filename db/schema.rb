@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20141215132503) do
     t.integer  "num_children"
     t.boolean  "has_unwanted",                  default: false
     t.string   "confirmation_method"
+    t.text     "notes"
   end
 
   create_table "diagnosed_health_problems", force: true do |t|
