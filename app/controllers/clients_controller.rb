@@ -1,6 +1,7 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
   before_action :set_clients
+  skip_before_filter :authenticate_user!, :only => :register_for_general_info
 
   respond_to :html
   layout "two_column"
