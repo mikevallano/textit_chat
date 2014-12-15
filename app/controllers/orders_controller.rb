@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   skip_before_filter :authenticate_user!, :only => :create_from_textit
 
   def index
-    @orders = current_user.orders
+    @orders = Order.all
     order_id = params[:order_id]
 
     if order_id
