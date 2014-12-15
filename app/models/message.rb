@@ -2,7 +2,7 @@ require 'rest_client'
 
 class Message < ActiveRecord::Base
   belongs_to :chat
-  @@system_sms_phone_name = "DKT"
+  @@system_sms_phone_name = "safe2choose"
   @@system_sms_phone_number = "+441618504838"
 
   before_save :set_sent_at
