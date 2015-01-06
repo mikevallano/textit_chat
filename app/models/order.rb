@@ -24,6 +24,12 @@ class Order < ActiveRecord::Base
     update(state: "Payment received") if pending_payment?
   end
 
+  def assign_to_all_users
+    User.all.each do |u|
+      OrderUpdate.create! order: self, user: u
+    end
+  end
+
   def self.create_from_textit(params)
     client = Client.find_or_create_by(phone_number: params[:phone])
 

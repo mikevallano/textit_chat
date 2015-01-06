@@ -17,5 +17,6 @@ class OrdersController < ApplicationController
   # POST /orders/create_from_textit
   def create_from_textit
     @order = Order.create_from_textit params
+    @order.assign_to_all_users
   end
 end
