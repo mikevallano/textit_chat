@@ -28,7 +28,7 @@ class Message < ActiveRecord::Base
       },
       {
         "Content-Type" => 'application/json',
-        'Authorization' => "Token #{ENV['TEXT_IT_TOKEN']}"
+        'Authorization' => "Token #{textit_token}"
       }
     ) unless Rails.env == "test"
   end
@@ -54,6 +54,10 @@ class Message < ActiveRecord::Base
     end
 
     return nil
+  end
+
+  def textit_token
+    to.match("+1").present? ? ENV['TEXT_IT_TOKEN_US'] : ENV['TEXT_IT_TOKEN_UK']
   end
 
   def self.new_from_chat(params, user)
