@@ -11,6 +11,7 @@
       <li class="list-group-item"><strong>Phone number: </strong><%= @client.phone_number %></li>
       <li class="list-group-item"><strong>Name: </strong><%= @client.name %></li>
       <li class="list-group-item"><strong>Address: </strong><%= @client.address %></li>
+      <li class="list-group-item"><strong>Country: </strong><%= @client.country %></li>
       <li class="list-group-item"><strong>Language: </strong><%= @client.language %></li>
       <li class="list-group-item"><strong>Birthday: </strong><%= @client.birthday %></li>
       <li class="list-group-item"><strong>Num children: </strong><%= @client.num_children %></li>
@@ -20,7 +21,18 @@
   <div class="col-sm-4">
     <h3>Medical history</h3>
     <ul class="list-group">
+      <li class="list-group-item"><strong>Confirmed pregancy: </strong><%= @client.confirmed_pregnancy %></li>
+      <li class="list-group-item"><strong>Confirmed method: </strong><%= @client.confirmation_method %></li>
+      <li class="list-group-item"><strong>Period start date: </strong><%= @client.normal_period_start_day %></li>
       <li class="list-group-item"><strong>Unwanted pregancy: </strong><%= @client.has_unwanted %></li>
+      <li class="list-group-item"><strong>Termination chosen: </strong><%= @client.termination_chosen %></li>
+      <li class="list-group-item"><strong>Informed pill risks: </strong><%= @client.informed_risks_pills %></li>
+      <li class="list-group-item"><strong>Informed IUD complications: </strong><%= @client.informed_iud %></li>
+      <li class="list-group-item"><strong>Other illnesses: </strong><%= @client.other_illness %></li>
+      <li class="list-group-item"><strong>Other STDs: </strong><%= @client.other_std %></li>
+      <li class="list-group-item"><strong>Attempted abortion already: </strong><%= @client.previous_termination_attempt %></li>
+      <li class="list-group-item"><strong>Bleeding from attempt: </strong><%= @client.previous_termination_attempt_bleeding %></li>
+
       <% @client.health_problems.each do |h| %>
         <li class="list-group-item"><strong>History of: </strong><%= h %></li>
       <% end %>
