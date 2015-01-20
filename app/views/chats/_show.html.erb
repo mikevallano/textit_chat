@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>DKT safe2choose Chat</h1>
-<h3>with <%= @chat.name %></h3>
+<h3>with <%= link_to @chat.name, @chat.client, class: "btn btn-link btn-lg" %></h3>
 <p class='text-muted'>Refresh the page to see new messages.</p>
 
 <br/>

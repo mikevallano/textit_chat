@@ -19,6 +19,18 @@ namespace :seed do
     end
   end
 
+  desc "Seeds DB with health problems"
+  task health_problems: :environment do
+    [
+      "Hepatitis",
+      "High blood pressure",
+      "HIV",
+      "Tuberculosous"
+    ].each do |hp|
+      HealthProblem.create!(name: hp)
+    end
+  end
+
   desc "Seeds DB with consultation questions"
   task consultations: :environment do
     {

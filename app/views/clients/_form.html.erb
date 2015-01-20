@@ -28,6 +28,13 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :country, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.country_select :country %>
+    </div>
+  </div>
+
+  <div class="form-group">
     <%= f.label :language, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
       <%= f.select(:language, client_languages, {include_blank: 'Select language'}) %>
@@ -50,12 +57,83 @@
 
   <h4>Medical history</h4>
   <div class="form-group">
+    <%= f.label :confirmed_pregnancy, class: "col-sm-2 control-label" %>
+    <div class="col-sm-1">
+      <%= f.check_box :confirmed_pregnancy, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
     <%= f.label :has_unwanted, class: "col-sm-2 control-label" %>
     <div class="col-sm-1">
       <%= f.check_box :has_unwanted, class: "form-control" %>
     </div>
   </div>
 
+  <div class="form-group">
+    <%= f.label :confirmation_method, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.select(:confirmation_method, confirmation_methods, {include_blank: 'Select confirmation method'}) %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :normal_period_start_day, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.date_select :normal_period_start_day, type: "text", class: "form-control", placeholder: "Period start date" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :termination_chosen, class: "col-sm-2 control-label" %>
+    <div class="col-sm-1">
+      <%= f.check_box :termination_chosen, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :informed_risks_pills, class: "col-sm-2 control-label" %>
+    <div class="col-sm-1">
+      <%= f.check_box :informed_risks_pills, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :informed_iud, class: "col-sm-2 control-label" %>
+    <div class="col-sm-1">
+      <%= f.check_box :informed_iud, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :other_illness, class: "col-sm-2 control-label" %>
+    <div class="col-sm-1">
+      <%= f.check_box :other_illness, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :other_std, class: "col-sm-2 control-label" %>
+    <div class="col-sm-1">
+      <%= f.check_box :other_std, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :previous_termination_attempt, class: "col-sm-2 control-label" %>
+    <div class="col-sm-1">
+      <%= f.check_box :previous_termination_attempt, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :previous_termination_attempt_bleeding, class: "col-sm-2 control-label" %>
+    <div class="col-sm-1">
+      <%= f.check_box :previous_termination_attempt_bleeding, class: "form-control" %>
+    </div>
+  </div>
+
+  <h5>Health Problems</h5>
   <% HealthProblem.all.each do |h| %>
     <div class="form-group">
       <p class="col-sm-2 control-label"><strong><%= h %></strong></p>

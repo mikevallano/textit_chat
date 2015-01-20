@@ -52,3 +52,5 @@ gem 'faker'
 gem "pundit"
 gem 'paper_trail'
 gem 'pry'
+
+gem 'country_select'
