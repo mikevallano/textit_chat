@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Preview:</strong>
+  <%= @consultation_question.preview %>
+</p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @consultation_question.question %>
+</p>
+
+<%= link_to 'Edit', edit_consultation_question_path(@consultation_question) %> |
+<%= link_to 'Back', consultation_questions_path %>

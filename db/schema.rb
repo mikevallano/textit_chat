@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141215132503) do
+ActiveRecord::Schema.define(version: 20150120172558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,14 +30,34 @@ ActiveRecord::Schema.define(version: 20141215132503) do
     t.text     "address"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "general_information_requested", default: false
+    t.boolean  "general_information_requested",         default: false
     t.string   "country"
     t.date     "birthday"
     t.string   "language"
     t.integer  "num_children"
-    t.boolean  "has_unwanted",                  default: false
+    t.boolean  "has_unwanted",                          default: false
     t.string   "confirmation_method"
     t.text     "notes"
+    t.boolean  "confirmed_pregnancy"
+    t.datetime "normal_period_start_day"
+    t.boolean  "termination_chosen"
+    t.boolean  "informed_risks_pills"
+    t.boolean  "informed_iud"
+    t.text     "informed_iud_statement"
+    t.boolean  "other_illness"
+    t.text     "other_illness_details"
+    t.boolean  "other_std"
+    t.text     "other_std_details"
+    t.boolean  "previous_termination_attempt"
+    t.boolean  "previous_termination_attempt_bleeding"
+    t.text     "other_information"
+  end
+
+  create_table "consultation_questions", force: true do |t|
+    t.text     "preview"
+    t.text     "question"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "diagnosed_health_problems", force: true do |t|

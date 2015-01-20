@@ -19,6 +19,29 @@ namespace :seed do
     end
   end
 
+  desc "Seeds DB with consultation questions"
+  task consultations: :environment do
+    {
+      "Country" => "What country do you live in?",
+      "Confirmed preganancy" => "Have you confirmed you are pregnant?",
+      "Encourage confirmation" => "You can confirm pregnancy by taking a pregnancy test or having an ultrasound.  Confirm your pregnancy.  If you have a positive result and you want an abortion with pills, you can count on safe2choose for a safe procedure.",
+      "Last period date" => "Confirm the first day of your last normal period",
+      "Unwanted pregnancy" => "Do you have an unwanted pregnancy?",
+      "Confirm termination" => "Are you sure you want to terminate this pregnancy?",
+      "Uncertain termination" => "If you are facing an unwanted pregnancy, remember you have three options to think about:  parenting, adoption and abortion.   Only you can decide, but you may find useful to talk about these choices with your partner, a close friend or a family member. If you are not ready to decide, you can consult our FAQs to learn about other alternatives.",
+      "Know side effects" => "Have you been informed about the efficacy, side effects and risks of using abortion pills?",
+      "Encourage research" => "At safe2choose we are committed to provide safe methods to have an abortion. It is important you learn about the abortion pills so you can make an informed decision.  Please visit this link and come back later to the online consultation",
+      "IUD awareness" => "If you have an IUD in place, are you aware you must remove it before taking the pills?",
+      "Other illnesses" => "Do you have any of the following illnesses:  known allergies, chronic adrenal failure, hemorrhagic disorder (bleeding disease), anemia, or inherited Porphyrias.",
+      "STDs" => "o you have a history of or presence of any sexually transmitted disease?",
+      "Attempted abortion" => "Have you already attempted to terminate this pregnancy using a different method?",
+      "Bleeding" => "Are you bleeding?",
+      "Other info" => "Would you like our doctor to be aware of any other relevant information about your health?  (e.g. medications you are currently taking;  previous history of ectopic pregnancy, etc.)"
+    }.each do |preview, question|
+      ConsultationQuestion.create!(preview: preview, question: question)
+    end
+  end
+
   desc "Seeds DB with random users, chats, and orders"
   task users_chats_orders: :environment do
     {

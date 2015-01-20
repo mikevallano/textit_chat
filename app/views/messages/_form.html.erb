@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="dropdown">
         <button class="btn btn-default dropdown-toggle" type="button" id="faqs" data-toggle="dropdown" aria-expanded="true">
           FAQs
@@ -20,21 +20,35 @@
         </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="faqs">
           <% @faqs.each do |faq| %>
-            <li role="presentation"><%= link_to faq, url_for_template(@chat, faq, @follow), role: "menuitem", tabindex: "-1"%></li>
+            <li role="presentation"><%= link_to faq, url_for_template(@chat, faq, @follow, @consultation), role: "menuitem", tabindex: "-1"%></li>
           <% end %>
         </ul>
       </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" id="faqs" data-toggle="dropdown" aria-expanded="true">
+        <button class="btn btn-default dropdown-toggle" type="button" id="followups" data-toggle="dropdown" aria-expanded="true">
           Follow-up Question
           <span class="caret"></span>
         </button>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="faqs">
+        <ul class="dropdown-menu" role="menu" aria-labelledby="followups">
           <% @follows.each do |follow| %>
-            <li role="presentation"><%= link_to follow, url_for_template(@chat, @faq, follow), role: "menuitem", tabindex: "-1"%></li>
+            <li role="presentation"><%= link_to follow, url_for_template(@chat, @faq, follow, @consultation), role: "menuitem", tabindex: "-1"%></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="consultations" data-toggle="dropdown" aria-expanded="true">
+          Consultation Question
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="consultations">
+          <% @consultations.each do |consultation| %>
+            <li role="presentation"><%= link_to consultation, url_for_template(@chat, @faq, @follow, consultation), role: "menuitem", tabindex: "-1"%></li>
           <% end %>
         </ul>
       </div>
@@ -46,7 +60,7 @@
   <div class="row">
     <div class="col-sm-11">
       <div class="form-group">
-        <%= f.text_area :message, value: message_value(@faq, @follow), placeholder: message_placeholder(@faq, @follow), class: "form-control", rows: "6" %>
+        <%= f.text_area :message, value: message_value(@faq, @follow, @consultation), placeholder: message_placeholder(@faq, @follow, @consultation), class: "form-control", rows: "6" %>
         <%= hidden_field_tag 'message[to]', @chat.name %>
       </div>
     </div>
