@@ -31,7 +31,7 @@
       <li class="list-group-item"><strong>Other illnesses: </strong><%= @client.other_illness %></li>
       <li class="list-group-item"><strong>Other STDs: </strong><%= @client.other_std %></li>
       <li class="list-group-item"><strong>Attempted abortion already: </strong><%= @client.previous_termination_attempt %></li>
-      <li class="list-group-item"><strong>Bleeding from attempt: </strong><%= @client.previous_termination_attempt_bleeding %></li>
+      <li class="list-group-item"><strong>Bleeding from attempts: </strong><%= @client.previous_termination_attempt_bleeding %></li>
 
       <% @client.health_problems.each do |h| %>
         <li class="list-group-item"><strong>History of: </strong><%= h %></li>

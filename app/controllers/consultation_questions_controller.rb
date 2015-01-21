@@ -3,6 +3,8 @@ class ConsultationQuestionsController < ApplicationController
 
   respond_to :html
 
+  layout "navbar_only"
+
   def index
     @consultation_questions = ConsultationQuestion.all
     respond_with(@consultation_questions)

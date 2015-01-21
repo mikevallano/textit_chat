@@ -1,6 +1,6 @@
-<h1>Listing consultation_questions</h1>
+<h1>Listing Consultation QUestions</h1>
 
-<table>
+<table class="table table-responsive table-striped">
   <thead>
     <tr>
       <th>Preview</th>
@@ -14,9 +14,9 @@
       <tr>
         <td><%= consultation_question.preview %></td>
         <td><%= consultation_question.question %></td>
-        <td><%= link_to 'Show', consultation_question %></td>
-        <td><%= link_to 'Edit', edit_consultation_question_path(consultation_question) %></td>
-        <td><%= link_to 'Destroy', consultation_question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', consultation_question, class: "btn btn-link"  %></td>
+        <td><%= link_to 'Edit', edit_consultation_question_path(consultation_question), class: "btn btn-link"  %></td>
+        <td><%= link_to 'Destroy', consultation_question, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"  %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Consultation question', new_consultation_question_path %>
+<%= link_to 'New Consultation question', new_consultation_question_path, class: "btn btn-success"  %>
