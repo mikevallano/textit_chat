@@ -37,6 +37,12 @@ class ChatsController < ApplicationController
     end
 
     @chats = @chats.sort  { |x,y| y.most_recent_message_time <=> x.most_recent_message_time }
+
+    respond_to do |format|
+      format.html
+      format.csv { render text: @chats.to_csv }
+      format.xls
+    end
   end
 
 end

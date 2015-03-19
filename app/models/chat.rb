@@ -12,4 +12,5 @@ class Chat < ActiveRecord::Base
   def name
     client.phone_number
   end
+
 end

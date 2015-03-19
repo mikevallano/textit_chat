@@ -11,7 +11,15 @@ class OrdersController < ApplicationController
       @order_update = OrderUpdate.new
     end
 
+    respond_to do |format|
+      format.html
+      format.csv { render text: @orders.to_csv }
+      format.xls
+    end
+
     @orders = @orders.sort  { |x,y| y.created_at <=> x.created_at }
+
+
   end
 
   # POST /orders/create_from_textit

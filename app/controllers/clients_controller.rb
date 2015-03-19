@@ -3,7 +3,6 @@ class ClientsController < ApplicationController
   before_action :set_clients
   skip_before_filter :authenticate_user!, :only => :register_for_general_info
 
-  respond_to :html, :csv
   layout "two_column"
 
   def index

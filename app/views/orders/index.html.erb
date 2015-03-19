@@ -2,7 +2,10 @@
   <div class="row">
     <div class="col-sm-3">
       <h3>Assigned orders</h3>
-
+      <p>
+        Export:
+        <%= link_to "CSV", orders_path(format: "csv"), class: "btn btn-link" %>
+      </p>
       <ul class="list-group">
         <% @orders.each do |order| %>
           <%= content_tag "a", href: url_for(order_id: order.id) do %>
