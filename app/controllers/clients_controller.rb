@@ -3,7 +3,7 @@ class ClientsController < ApplicationController
   before_action :set_clients
   skip_before_filter :authenticate_user!, :only => :register_for_general_info
 
-  respond_to :html
+  respond_to :html, :csv
   layout "two_column"
 
   def index
@@ -13,6 +13,11 @@ class ClientsController < ApplicationController
       @client = @clients.find(client_id)
     end
 
+    respond_to do |format|
+      format.html
+      format.csv { render text: @clients.to_csv }
+      format.xls
+    end
   end
 
   def show

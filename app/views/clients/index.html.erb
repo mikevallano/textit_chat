@@ -1,7 +1,11 @@
 <div class="row">
   <div class="col-sm-3">
     <h3>Registered clients</h3>
-
+    <p>
+      Export:
+      <%= link_to "CSV", clients_path(format: "csv"), class: "btn btn-link" %> |
+      <%= link_to "Excel", clients_path(format: "xls"), class: "btn btn-link" %>
+    </p>
     <ul class="list-group">
       <% @clients.each do |client| %>
         <%= content_tag "a", href: url_for(client_id: client.id) do %>
