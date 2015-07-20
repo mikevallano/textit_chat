@@ -11,7 +11,7 @@ module Api
       end
 
       def new_message
-        respond_with Message.create(texit_params)
+        respond_with Message.create_from_textit(params)
       end
 
       def new_order

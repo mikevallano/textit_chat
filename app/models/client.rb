@@ -39,12 +39,7 @@ class Client < ActiveRecord::Base
 
   def self.update_or_create_chat(params)
     client = Client.find_or_create_by(params)
-    # chat = client.chat
     chat = Chat.new
-    # unless(chat)
-    #   chat = client.build_chat
-    #   chat.save
-    # end
 
     if client.chat.nil?
       chat = client.create_chat
@@ -52,6 +47,8 @@ class Client < ActiveRecord::Base
       chat = client.chat
     end
 
-    # User.subscribe_all(chat)
+    User.subscribe_all(chat)
+
+    chat
   end
 end
