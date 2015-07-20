@@ -15,7 +15,7 @@ module Api
       end
 
       def new_order
-        order = Order.create texit_params
+        order = Order.create_from_textit texit_params
         order.assign_to_all_users
         respond_with order
       end

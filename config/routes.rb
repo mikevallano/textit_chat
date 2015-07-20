@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   # it tried to find *_url so easiest to just do basic scaffolding routes for now
   resources :chats
   resources :messages
+  resources :orders
 
 
   resources :clients do
