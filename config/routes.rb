@@ -25,7 +25,11 @@ Rails.application.routes.draw do
   end
 
   resources :faqs
+  # TODO remove these, required due to some weird behavior using respond_with
+  # it tried to find *_url so easiest to just do basic scaffolding routes for now
   resources :chats
+  resources :messages
+
 
   resources :clients do
     collection do

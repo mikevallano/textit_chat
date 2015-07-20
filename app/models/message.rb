@@ -37,7 +37,7 @@ class Message < ActiveRecord::Base
     chat_name = params[:phone]
     if chat_name.present?
       client = Client.find_or_create_by(phone_number: chat_name)
-      chat = client.chat.first_or_create!
+      chat = client.chat
 
       message = Message.create(
         to: Message.system_sms_phone_number,
