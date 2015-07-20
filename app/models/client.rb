@@ -1,5 +1,5 @@
 class Client < ActiveRecord::Base
-  has_many :chats
+  has_one :chat
   has_many :orders
   has_many :sent_push_notifications
   has_many :push_notifications, through: :sent_push_notifications
@@ -10,10 +10,6 @@ class Client < ActiveRecord::Base
   accepts_nested_attributes_for :health_problems
 
   has_paper_trail
-
-  def chat
-    chats.present? ? chats.first : chats
-  end
 
   def state
     orders.present? ? orders.first.state : Order.STATE_NONE
@@ -39,5 +35,23 @@ class Client < ActiveRecord::Base
         csv << client.attributes.values_at(*column_names)
       end
     end
+  end
+
+  def self.update_or_create_chat(params)
+    client = Client.find_or_create_by(params)
+    # chat = client.chat
+    chat = Chat.new
+    # unless(chat)
+    #   chat = client.build_chat
+    #   chat.save
+    # end
+
+    if client.chat.nil?
+      chat = client.create_chat
+    else
+      chat = client.chat
+    end
+
+    # User.subscribe_all(chat)
   end
 end

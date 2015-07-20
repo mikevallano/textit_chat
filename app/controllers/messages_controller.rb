@@ -1,5 +1,4 @@
 class MessagesController < ApplicationController
-  skip_before_filter :authenticate_user!, :only => :create_from_textit
   # POST /messages
   # POST /messages.json
   def create
@@ -17,11 +16,11 @@ class MessagesController < ApplicationController
     end
   end
 
-  # POST /messages/create_from_textit
-  # POST /messages/create_from_textit.json
-  def create_from_textit
-    @message = Message.create_from_textit params
-  end
+  # # POST /messages/create_from_textit
+  # # POST /messages/create_from_textit.json
+  # def create_from_textit
+  #   @message = Message.create_from_textit params
+  # end
 
   private
     # Never trust parameters from the scary internet, only allow the white list through.
