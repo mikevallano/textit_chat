@@ -1,0 +1,11 @@
+healthproblem1:
+  name: "Hepatitis"
+
+healthproblem2:
+  name: "High blood pressure"
+
+healthproblem3:
+  name: "HIV"
+
+healthproblem4:
+  name: "Tuberculosous"
