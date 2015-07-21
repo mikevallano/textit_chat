@@ -1,0 +1,7 @@
+question1:
+  question: "Where do you live?"
+  locale: "en"
+
+question2:
+  question: "How old are you?"
+  locale: "en"

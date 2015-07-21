@@ -1,59 +1,74 @@
 consultation1:
   preview: "Country"
   question: "What country do you live in?"
+  locale: "en"
 
 consultation2:
   preview: "Confirmed preganancy"
   question: "Have you confirmed you are pregnant?"
+  locale: "en"
 
 consultation3:
   preview: "Encourage confirmation"
   question: "You can confirm pregnancy by taking a pregnancy test or having an ultrasound.  Confirm your pregnancy.  If you have a positive result and you want an abortion with pills, you can count on safe2choose for a safe procedure."
+  locale: "en"
 
 consultation4:
   preview: "Last period date"
   question: "Confirm the first day of your last normal period"
+  locale: "en"
 
 consultation5:
   preview: "Unwanted pregnancy"
   question: "Do you have an unwanted pregnancy?"
+  locale: "en"
 
 consultation6:
   preview: "Confirm termination"
   question: "Are you sure you want to terminate this pregnancy?"
+  locale: "en"
 
 consultation7:
   preview: "Uncertain termination"
   question: "If you are facing an unwanted pregnancy, remember you have three options to think about:  parenting, adoption and abortion.   Only you can decide, but you may find useful to talk about these choices with your partner, a close friend or a family member. If you are not ready to decide, you can consult our FAQs to learn about other alternatives."
+  locale: "en"
 
 consultation8:
   preview: "Know side effects"
   question: "Have you been informed about the efficacy, side effects and risks of using abortion pills?"
+  locale: "en"
 
 consultation9:
   preview: "Encourage research"
   question: "At safe2choose we are committed to provide safe methods to have an abortion. It is important you learn about the abortion pills so you can make an informed decision.  Please visit this link and come back later to the online consultation"
+  locale: "en"
 
 consultation10:
   preview: "IUD awareness"
   question: "If you have an IUD in place, are you aware you must remove it before taking the pills?"
+  locale: "en"
 
 consultation11:
   preview: "Other illnesses"
   question: "Do you have any of the following illnesses:  known allergies, chronic adrenal failure, hemorrhagic disorder (bleeding disease), anemia, or inherited Porphyrias."
+  locale: "en"
 
 consultation12:
   preview: "STDs"
   question: "Do you have a history of or presence of any sexually transmitted disease?"
+  locale: "en"
 
 consultation13:
   preview: "Attempted abortion"
   question: "Have you already attempted to terminate this pregnancy using a different method?"
+  locale: "en"
 
 consultation14:
   preview: "Bleeding"
   question: "Are you bleeding?"
+  locale: "en"
 
 consultation15:
   preview: "Other info"
   question: "Would you like our doctor to be aware of any other relevant information about your health?  (e.g. medications you are currently taking;  previous history of ectopic pregnancy, etc.)"
+  locale: "en"

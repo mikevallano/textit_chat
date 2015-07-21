@@ -1,7 +1,7 @@
 namespace :seed do
   desc "Seeds DB with predefines FAQs"
   task faqs: :environment do
-   faqs = YAML.load_file('lib/tasks/faq_seed.yml')
+   faqs = YAML.load_file('lib/tasks/en.faq_seed.yml')
     faqs.each do |faq, details|
       Faq.create(details)
     end
@@ -9,7 +9,7 @@ namespace :seed do
 
   desc "Seeds DB with predefined follow-up questions"
   task follows: :environment do
-    followups = YAML.load_file('lib/tasks/follow_up_seed.yml')
+    followups = YAML.load_file('lib/tasks/en.follow_up_seed.yml')
     followups.each do |question, details|
       FollowUpQuestion.create(details)
     end
@@ -17,7 +17,7 @@ namespace :seed do
 
   desc "Seeds DB with health problems"
   task health_problems: :environment do
-    problems = YAML.load_file('lib/tasks/health_problem_seed.yml')
+    problems = YAML.load_file('lib/tasks/en.health_problem_seed.yml')
     problems.each do |problem, details|
       HealthProblem.create(details)
     end
@@ -25,7 +25,7 @@ namespace :seed do
 
   desc "Seeds DB with consultation questions"
   task consultations: :environment do
-    consultations = YAML.load_file('lib/tasks/consultation_seed.yml')
+    consultations = YAML.load_file('lib/tasks/en.consultation_seed.yml')
     consultations.each do |consult, details|
       ConsultationQuestion.create(details)
     end
@@ -63,7 +63,7 @@ namespace :seed do
 
   desc "Seeds DB admins"
   task admins: :environment do
-    users = YAML.load_file('lib/tasks/admin_seed.yml')
+    users = YAML.load_file('lib/tasks/en.admin_seed.yml')
     users.each do |user, details|
       User.create(details)
     end
