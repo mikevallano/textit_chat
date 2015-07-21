@@ -1,0 +1,17 @@
+user1:
+  email: "marvinmarnold@gmail.com"
+  password: "marvinsafe2choose"
+  is_admin: true
+  locale: "en"
+
+user2:
+  email: "rodrigo@dktinternational.org"
+  password: "rodrigosafe2choose"
+  is_admin: true
+  locale: "en"
+
+user3:
+  email: "mikevallano@gmail.com"
+  password: "mikesafe2choose"
+  is_admin: true
+  locale: "en"
