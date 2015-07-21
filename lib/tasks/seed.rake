@@ -1,5 +1,5 @@
 namespace :seed do
-  desc "Seeds DB with predefines FAQs"
+  desc "Seeds DB with predefined FAQs"
   task faqs: :environment do
     {
       "What are abortion pills?" => "Abortion pills are prescribed tablets that can be used to induce an abortion during the first 9 weeks of pregnancy. The active ingredient in these pills is called Mifepristone and is sometimes taken with Misoprostol.",
