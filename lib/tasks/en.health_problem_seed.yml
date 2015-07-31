@@ -1,15 +1,5 @@
-healthproblem1:
-  name: "Hepatitis"
-  locale: "en"
-
-healthproblem2:
-  name: "High blood pressure"
-  locale: "en"
-
-healthproblem3:
-  name: "HIV"
-  locale: "en"
-
-healthproblem4:
-  name: "Tuberculosous"
-  locale: "en"
+en:
+- name: "Hepatitis"
+- name: "High blood pressure"
+- name: "HIV"
+- name: "Tuberculosous"
