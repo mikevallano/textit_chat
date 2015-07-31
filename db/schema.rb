@@ -45,12 +45,9 @@ ActiveRecord::Schema.define(version: 20150721144231) do
     t.boolean  "informed_iud"
     t.text     "informed_iud_statement"
     t.boolean  "other_illness"
-    t.text     "other_illness_details"
     t.boolean  "other_std"
-    t.text     "other_std_details"
     t.boolean  "previous_termination_attempt"
     t.boolean  "previous_termination_attempt_bleeding"
-    t.text     "other_information"
   end
 
   create_table "consultation_questions", force: :cascade do |t|
