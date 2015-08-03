@@ -14,7 +14,7 @@ class ChatsController < ApplicationController
       @messages = @messages.sort { |x,y| y.sent_at <=> x.sent_at }
       current_user.update_last_read(@chat)
 
-      @faqs = Faq.filteredByLocale(I18n.locale)
+      @faqs = Faq.all
       faq_id = params[:faq_id]
 
       if faq_id
@@ -28,7 +28,7 @@ class ChatsController < ApplicationController
         @follow = @follows.find(follow_id)
       end
 
-      @consultations = ConsultationQuestion.filteredByLocale(I18n.locale)
+      @consultations = ConsultationQuestion.all
       consultation_id = params[:consultation_id]
 
       if consultation_id
