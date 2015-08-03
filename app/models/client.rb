@@ -1,4 +1,5 @@
 class Client < ActiveRecord::Base
+  include LocaleFilter
   has_one :chat
   has_many :orders
   has_many :sent_push_notifications

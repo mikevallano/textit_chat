@@ -1,4 +1,5 @@
 class Chat < ActiveRecord::Base
+  include LocaleFilter
   has_many :messages
   has_many :subscriptions
   has_many :users, through: :subscriptions

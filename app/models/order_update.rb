@@ -1,4 +1,5 @@
 class OrderUpdate < ActiveRecord::Base
+  include LocaleFilter
   belongs_to :user
   belongs_to :order
 

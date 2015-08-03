@@ -1,4 +1,5 @@
 class PushNotification < ActiveRecord::Base
+  include LocaleFilter
   has_paper_trail
 
   def self.push
