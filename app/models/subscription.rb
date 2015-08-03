@@ -1,4 +1,5 @@
 class Subscription < ActiveRecord::Base
+  include LocaleFilter
   belongs_to :user
   belongs_to :chat
 
