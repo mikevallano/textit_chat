@@ -1,4 +1,5 @@
 class Order < ActiveRecord::Base
+  include LocaleFilter
   has_many :order_updates
   belongs_to :client
   before_save :set_default_state

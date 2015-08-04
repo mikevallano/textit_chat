@@ -1,6 +1,7 @@
 require 'rest-client'
 
 class Message < ActiveRecord::Base
+  include LocaleFilter
   belongs_to :chat
   @@system_sms_phone_name = "safe2choose"
   @@system_sms_phone_number = "+441618504838"
