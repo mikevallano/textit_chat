@@ -1,4 +1,4 @@
-require 'rest_client'
+require 'rest-client'
 
 class Message < ActiveRecord::Base
   belongs_to :chat
@@ -74,7 +74,7 @@ class Message < ActiveRecord::Base
 
   def self.new_push_notification(to, message)
     client = Client.find_or_create_by(phone_number: to)
-    chat = client.chats.first_or_create!
+    chat = client.chat
 
     Message.new(
       sent_at: Time.zone.now,

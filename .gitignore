@@ -19,4 +19,4 @@
 *~
 
 #ignore admin_seed file
-/lib/tasks/admin_seed.yml
+*admin_seed.yml
