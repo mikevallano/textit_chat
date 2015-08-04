@@ -13,8 +13,6 @@ class User < ActiveRecord::Base
     start = s.last_read_at
     finish = Time.zone.tomorrow
 
-    puts start
-    puts finish
     chat.messages.where(:sent_at => start..finish)
   end
 
@@ -24,8 +22,8 @@ class User < ActiveRecord::Base
   end
 
   def self.subscribe_all(chat)
-    all.each do |u|
-      u.subscribe_to chat
+    all.each do |user|
+      user.subscribe_to chat
     end
   end
 
