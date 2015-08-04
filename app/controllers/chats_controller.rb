@@ -14,21 +14,21 @@ class ChatsController < ApplicationController
       @messages = @messages.sort { |x,y| y.sent_at <=> x.sent_at }
       current_user.update_last_read(@chat)
 
-      @faqs = Faq.all
+      @faqs = Faq.filtered_by_locale
       faq_id = params[:faq_id]
 
       if faq_id
         @faq = @faqs.find(faq_id)
       end
 
-      @follows = FollowUpQuestion.all
+      @follows = FollowUpQuestion.filtered_by_locale
       follow_id = params[:follow_id]
 
       if follow_id
         @follow = @follows.find(follow_id)
       end
 
-      @consultations = ConsultationQuestion.all
+      @consultations = ConsultationQuestion.filtered_by_locale
       consultation_id = params[:consultation_id]
 
       if consultation_id

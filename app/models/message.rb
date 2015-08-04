@@ -58,7 +58,7 @@ class Message < ActiveRecord::Base
   end
 
   def textit_token
-    to.match(/\+1/).present? ? ENV['TEXT_IT_TOKEN_US'] : ENV['TEXT_IT_TOKEN_UK']
+    to.match(/\+44/).present? ? Rails.application.secrets.textit_token_uk : Rails.application.secrets.textit_token_us
   end
 
   def self.new_from_chat(params, user)
