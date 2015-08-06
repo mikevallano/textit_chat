@@ -21,3 +21,4 @@
 #ignore admin_seed file
 *admin_seed.yml
 *secrets.yml
+*.sublime-workspace
