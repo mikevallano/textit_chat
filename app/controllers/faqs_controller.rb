@@ -44,6 +44,6 @@ class FaqsController < ApplicationController
     end
 
     def faq_params
-      params.require(:faq).permit(:question, :answer)
+      params.require(:faq).permit(:question, :answer, :locale)
     end
 end
