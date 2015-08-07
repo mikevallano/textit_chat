@@ -10,5 +10,10 @@
   <%= @consultation_question.question %>
 </p>
 
+<p>
+  <strong>Language:</strong>
+  <td><%= @consultation_question.locale %></td>
+</p>
+
 <%= link_to 'Edit', edit_consultation_question_path(@consultation_question) %> |
 <%= link_to 'Back', consultation_questions_path %>

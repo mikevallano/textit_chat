@@ -43,6 +43,6 @@ class HealthProblemsController < ApplicationController
     end
 
     def health_problem_params
-      params.require(:health_problem).permit(:name)
+      params.require(:health_problem).permit(:name, :locale)
     end
 end

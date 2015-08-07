@@ -5,5 +5,10 @@
   <%= @follow_up_question.question %>
 </p>
 
+<p>
+  <strong>Language:</strong>
+  <td><%= @follow_up_question.locale %></td>
+</p>
+
 <%= link_to 'Edit', edit_follow_up_question_path(@follow_up_question), class: "btn btn-link" %> |
 <%= link_to 'Back', follow_up_questions_path, class: "btn btn-link" %>

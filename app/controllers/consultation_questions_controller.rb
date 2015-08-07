@@ -44,6 +44,6 @@ class ConsultationQuestionsController < ApplicationController
     end
 
     def consultation_question_params
-      params.require(:consultation_question).permit(:preview, :question)
+      params.require(:consultation_question).permit(:preview, :question, :locale)
     end
 end
