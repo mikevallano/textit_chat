@@ -44,6 +44,6 @@ class FollowUpQuestionsController < ApplicationController
     end
 
     def follow_up_question_params
-      params.require(:follow_up_question).permit(:question)
+      params.require(:follow_up_question).permit(:question, :locale)
     end
 end

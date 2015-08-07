@@ -5,6 +5,7 @@
     <tr>
       <th>Preview</th>
       <th>Question</th>
+      <th>Language</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,6 +15,7 @@
       <tr>
         <td><%= consultation_question.preview %></td>
         <td><%= consultation_question.question %></td>
+        <td><%= consultation_question.locale %></td>
         <td><%= link_to 'Show', consultation_question, class: "btn btn-link"  %></td>
         <td><%= link_to 'Edit', edit_consultation_question_path(consultation_question), class: "btn btn-link"  %></td>
         <td><%= link_to 'Destroy', consultation_question, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"  %></td>
