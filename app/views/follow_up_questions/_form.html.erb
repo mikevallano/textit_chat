@@ -19,12 +19,8 @@
   </div>
 
   <div class="form-group">
-    <p>Select Language</p>
-    <select name="follow_up_question[locale]">
-      <option value="en">English</option>
-      <option value="zu">Zulu</option>
-      <option value="xh">Xhosa</option>
-    </select>
+    <%= f.label :locale, "Language", class: "col-sm-2 control-label" %>
+    <%= f.select :locale, locale_array, class: "form-control" %>
   </div>
 
   <div class="actions">
