@@ -13,7 +13,8 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options(options = {})
-    { locale: I18n.locale }.merge options
+    options.merge!({ locale: I18n.locale }) unless is_default_locale_active?
+    options
   end
 
 
@@ -23,5 +24,10 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(resource_or_scope)
     root_path
+  end
+
+  helper_method :is_default_locale_active?
+  def is_default_locale_active?
+    I18n.locale == I18n.default_locale
   end
 end

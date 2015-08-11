@@ -28,9 +28,10 @@
           <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Language <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="?locale=en">English</a></li>
-            <li><a href="?locale=zu">Zulu</a></li>
-            <li><a href="?locale=xh">Xhosa</a></li>
+            <% locale_array.each do |l| %>
+              <li><%= link_to locale_array_entry_name(l),
+              url_for(locale_params_for(locale_array_entry_abbr(l), params)) %></li>
+            <% end %>
           </ul>
         <li><%= button_to "Sign out", destroy_user_session_path, method: "delete", class: "btn btn-danger navbar-btn" %></li>
       </ul>
