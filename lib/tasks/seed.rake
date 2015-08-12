@@ -47,8 +47,8 @@ namespace :seed do
   desc "Seeds DB with random users, chats, and orders"
   task users_chats_orders: :environment do
     {
-      "marvinmarnold@gmail.com" => "marvinsafe2choose",
-      "rodrigo@dktinternational.org" => "rodrigosafe2choose"
+      "test1@gmail.com" => "test1safe2choose",
+      "test2@dktinternational.org" => "test2safe2choose"
     }.each do |k, v|
       u = User.create!(email: k, password: v, is_admin: true)
       20.times do
