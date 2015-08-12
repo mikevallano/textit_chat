@@ -50,7 +50,7 @@ class Message < ActiveRecord::Base
         chat: chat
       )
 
-      User.subscribe_all(chat)
+      User.subscribe_all(chat)d
 
       return message
     end
@@ -59,7 +59,7 @@ class Message < ActiveRecord::Base
   end
 
   def textit_token
-    to.match(/\+44/).present? ? Rails.application.secrets.textit_token_uk : Rails.application.secrets.textit_token_us
+    to.match(/\+44/).present? ? ENV["TEXT_IT_TOKEN_UK"] : ENV["TEXT_IT_TOKEN_US"]
   end
 
   def self.new_from_chat(params, user)
