@@ -20,7 +20,8 @@ class Message < ActiveRecord::Base
 
   def send_textit_sms
     textit_endpoint = "https://api.textit.in/api/v1/messages.json"
-
+    # binding.pry
+    puts "text_it token: #{textit_token}"
     RestClient.post(
       textit_endpoint,
       {
