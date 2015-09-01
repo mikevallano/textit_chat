@@ -20,7 +20,7 @@ RSpec.describe CodeValidator, type: :model do
     end
 
     it "doesn't allow too many general redemptions" do
-      validator = CodeValidator.create(max_redemptions: 1)
+      validator = CodeValidator.create(max_redemptions: 1, max_unique_redemptions: -1)
       code = Code.create(code_validator: validator)
 
       expect(validator.is_valid_code?(code)).to eq(true)
@@ -28,7 +28,7 @@ RSpec.describe CodeValidator, type: :model do
       expect(validator.is_valid_code?(code)).to eq(false)
     end
 
-    it "doesn't allow too many unique redemptions" do
+    it "doesn't allow too many redemptions from the same client" do
       validator = FactoryGirl.create(:limited_code_validator, max_unique_redemptions: 1)
       code = FactoryGirl.create(:code, code_validator_id: validator.id)
       client = FactoryGirl.create(:client)

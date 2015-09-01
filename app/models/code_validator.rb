@@ -5,8 +5,8 @@ class CodeValidator < ActiveRecord::Base
   def is_valid_code?(code, client = nil)
     reload
     validator?(code) &&
-    !reached_max_unique_redemptions?(client) &&
-    !reached_max_redemptions?
+    !reached_max_redemptions? &&
+    !reached_max_unique_redemptions?(client)
   end
 
   # Return true if the validator has processed too many redemptions
