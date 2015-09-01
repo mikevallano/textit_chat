@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150831221258) do
+ActiveRecord::Schema.define(version: 20150831214013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,14 +58,12 @@ ActiveRecord::Schema.define(version: 20150831221258) do
   create_table "code_usages", force: :cascade do |t|
     t.integer  "code_id"
     t.integer  "client_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.integer  "code_validator_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "code_usages", ["client_id"], name: "index_code_usages_on_client_id", using: :btree
   add_index "code_usages", ["code_id"], name: "index_code_usages_on_code_id", using: :btree
-  add_index "code_usages", ["code_validator_id"], name: "index_code_usages_on_code_validator_id", using: :btree
 
   create_table "code_validators", force: :cascade do |t|
     t.integer  "max_redemptions"
@@ -225,7 +223,6 @@ ActiveRecord::Schema.define(version: 20150831221258) do
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
   add_foreign_key "code_usages", "clients"
-  add_foreign_key "code_usages", "code_validators"
   add_foreign_key "code_usages", "codes"
   add_foreign_key "codes", "code_batches"
   add_foreign_key "codes", "code_validators"

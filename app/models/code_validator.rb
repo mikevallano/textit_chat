@@ -1,9 +1,12 @@
 class CodeValidator < ActiveRecord::Base
-  has_many :codes
+  has_many :codes, inverse_of: :code_validator
   has_many :code_usages, through: :codes
 
-  def is_valid_code?(code)
-    !reached_max_redemptions? && validator?(code)
+  def is_valid_code?(code, client = nil)
+    reload
+    validator?(code) &&
+    !reached_max_unique_redemptions?(client) &&
+    !reached_max_redemptions?
   end
 
   # Return true if the validator has processed too many redemptions
@@ -15,9 +18,9 @@ class CodeValidator < ActiveRecord::Base
 
   # Return true if validator has processed too many redemptions from a specific client
   # set to -1 if unlimited allowed
-  def reached_max_unique_redemptions?(code)
+  def reached_max_unique_redemptions?(client)
     self.max_unique_redemptions != -1 &&
-    code_usages.client_usages(code.client).size >= self.max_unique_redemptions(code)
+    (client == nil || code_usages.where(client: client).size >= self.max_unique_redemptions)
   end
 
   # Returns true if CodeValidator assigned to code
