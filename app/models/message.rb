@@ -50,7 +50,7 @@ class Message < ActiveRecord::Base
         chat: chat
       )
 
-      User.subscribe_all(chat)d
+      User.subscribe_all(chat)
 
       return message
     end
