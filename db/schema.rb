@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150721144231) do
+ActiveRecord::Schema.define(version: 20150831214013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,39 @@ ActiveRecord::Schema.define(version: 20150721144231) do
     t.boolean  "previous_termination_attempt"
     t.boolean  "previous_termination_attempt_bleeding"
   end
+
+  create_table "code_batches", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "code_usages", force: :cascade do |t|
+    t.integer  "code_id"
+    t.integer  "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "code_usages", ["client_id"], name: "index_code_usages_on_client_id", using: :btree
+  add_index "code_usages", ["code_id"], name: "index_code_usages_on_code_id", using: :btree
+
+  create_table "code_validators", force: :cascade do |t|
+    t.integer  "max_redemptions"
+    t.integer  "max_unique_redemptions"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "codes", force: :cascade do |t|
+    t.string   "code"
+    t.integer  "code_validator_id"
+    t.integer  "code_batch_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "codes", ["code_batch_id"], name: "index_codes_on_code_batch_id", using: :btree
+  add_index "codes", ["code_validator_id"], name: "index_codes_on_code_validator_id", using: :btree
 
   create_table "consultation_questions", force: :cascade do |t|
     t.text     "preview"
@@ -189,4 +222,8 @@ ActiveRecord::Schema.define(version: 20150721144231) do
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
+  add_foreign_key "code_usages", "clients"
+  add_foreign_key "code_usages", "codes"
+  add_foreign_key "codes", "code_batches"
+  add_foreign_key "codes", "code_validators"
 end

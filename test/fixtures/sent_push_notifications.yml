@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  push_notification_id: 
-  client_id: 
-
-two:
-  push_notification_id: 
-  client_id: 

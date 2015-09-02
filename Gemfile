@@ -1,13 +1,10 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
-# Use Uglifier as compressor for JavaScript assets
+# Use SCSS for stylesompressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
@@ -23,8 +20,20 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
-# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
+
+group :development do
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
+
+end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
+  gem 'pry-rails'
+  gem 'pry'
+  gem "factory_girl_rails", "~> 4.0"
+end
+
 gem 'railsstrap'
 
 # Use ActiveModel has_secure_password
@@ -40,7 +49,7 @@ gem 'railsstrap'
 # gem 'debugger', group: [:development, :test]
 
 gem 'rails_12factor', group: :production
-gem 'pry-rails', :group => :development
+
 gem 'rest-client'
 
 gem "therubyracer"
@@ -51,6 +60,5 @@ gem 'devise'
 gem 'faker'
 gem "pundit"
 gem 'paper_trail'
-gem 'pry'
 
 gem 'country_select'
